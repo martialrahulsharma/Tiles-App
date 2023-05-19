@@ -18,7 +18,7 @@ const Lapeta = () => {
   });
 
   const [tileInput, setTileInput] = useState({
-    tileLenght: lapetaComponentTiles.tileHeight,
+    tileLenght: lapetaComponentTiles.tileLength,
     tileWidth: lapetaComponentTiles.tileWidth,
     tileInABox: lapetaComponentTiles.tileInABox,
     tilePricePerBox: lapetaComponentTiles.tilePricePerBox,
@@ -67,11 +67,12 @@ const Lapeta = () => {
     setTileInput((state) => {
       sessionStorage.setItem(
         "LapetaComponent",
-        JSON.stringify({ ...lapetaComponentTiles, tileLenght: Number(tileLenght) })
+        JSON.stringify({ ...lapetaComponentTiles, tileLength: Number(tileLenght) })
       );
       return { ...state, tileLenght: (state.tileLenght = tileLenght) };
     });
   };
+
   const tileWidthHandler = (tileWidth) => {
     setTileInput((state) => {
       sessionStorage.setItem(
@@ -105,8 +106,6 @@ const Lapeta = () => {
 
   const submitHandle = (event) => {
     event.preventDefault();
-    console.log(roomOf.lapeta);
-    console.log(roomOf.doorSize);
     let lapet = roomOf.lapeta - roomOf.doorSize;
     setUpdateCard(true);
     setOutputState((prev) => {

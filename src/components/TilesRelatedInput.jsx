@@ -2,18 +2,18 @@ import React from "react";
 import { useState } from "react";
 import classes from "./TilesRelatedInput.module.css";
 
-let lapetaComponentTiles;
+// let lapetaComponentTiles;
 // lapetaComponentTiles = JSON.parse(sessionStorage.LapetaComponent);
 
 const TilesRelatedInput = (props) => {
-  lapetaComponentTiles = JSON.parse(sessionStorage.LapetaComponent);
+  // lapetaComponentTiles = JSON.parse(sessionStorage.LapetaComponent);
 
-  const [lapetaCompo, setLapetaCompo] = useState({
-    tileLength: lapetaComponentTiles.tileLength,
-    tileWidth: lapetaComponentTiles.tileWidth,
-    tileInABox: lapetaComponentTiles.tileInABox,
-    tilePricePerBox: lapetaComponentTiles.tilePricePerBox,
-  });
+  // const [lapetaCompo, setLapetaCompo] = useState({
+  //   tileLength: lapetaComponentTiles.tileLength,
+  //   tileWidth: lapetaComponentTiles.tileWidth,
+  //   tileInABox: lapetaComponentTiles.tileInABox,
+  //   tilePricePerBox: lapetaComponentTiles.tilePricePerBox,
+  // });
 
 
   const [lengthValue, setLengthValue] = useState(0);
@@ -23,18 +23,18 @@ const TilesRelatedInput = (props) => {
 
   const lengthValueHandler = (event) => {
     if(props.lapetaComponent == 'LapetaComponent'){
-      // setLengthValue(event.target.value);
+      setLengthValue(event.target.value);
 
-      setLapetaCompo((prev) => {
-        sessionStorage.setItem(
-          "LapetaComponent",
-          JSON.stringify({ ...lapetaComponentTiles, tileLength: Number(event.target.value) })
-        );
-        return {...prev, tileLength: (lapetaCompo.tileLength = event.target.value) };
-      });
+      // setLapetaCompo((prev) => {
+      //   sessionStorage.setItem(
+      //     "LapetaComponent",
+      //     JSON.stringify({ ...lapetaComponentTiles, tileLength: Number(event.target.value) })
+      //   );
+      //   return {...prev, tileLength: (lapetaCompo.tileLength = event.target.value) };
+      // });
 
-      props.onLengthTile(lapetaCompo.tileLength);
-      // props.onLengthTile(event.target.value);
+      // props.onLengthTile(lapetaCompo.tileLength);
+      props.onLengthTile(event.target.value);
       console.log('LapetaComponent');
     }
     if(props.LWHComponent == 'LWHComponent'){
@@ -67,7 +67,7 @@ const TilesRelatedInput = (props) => {
           <input
             type="number"
             placeholder="Length"
-            value={lapetaCompo.tileLength}
+            value={lengthValue}
             onChange={lengthValueHandler}
           />
           <input

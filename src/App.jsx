@@ -8,7 +8,7 @@ import SquareFeet from "./components/SquareFeet";
 import LengthWidth from "./components/LengthWidth";
 import "../src/App.css";
 
-sessionStorage.setItem('LapetaComponent', JSON.stringify({'lapeta': 0, 'height': 0, 'doorSize': 0, 'tileHeight': 0, 'tileWidth': 0, 'tileInABox': 0, 'tilePerBoxPrice': 0}));
+sessionStorage.setItem('LapetaComponent', JSON.stringify({'lapeta': 0, 'height': 0, 'doorSize': 0, 'tileLength': 0, 'tileWidth': 0, 'tileInABox': 0, 'tilePricePerBox': 0}));
 let costmerSizeProvided = ['Lapeta', 'LWH', 'Sqr Ft', 'LW'];
 
 function App() {
