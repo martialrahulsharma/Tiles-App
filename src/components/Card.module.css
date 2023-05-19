@@ -1,0 +1,25 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    /* margin: auto; */
+    
+    height: auto;
+    /* margin-top: 10px; */
+    padding: 10px;
+    /* border: 1px solid black; */
+    /* border-radius: 20px; */
+    background-color: rgb(235, 235, 235);
+}
+
+.card label{
+    font-size: larger;
+    font-weight: bold;
+}
+
+.card .rowContainer{
+    display: flex;
+    flex-direction: row;
+    row-gap: 10px;
+    column-gap: 20px;
+    margin-top: 20px;
+}

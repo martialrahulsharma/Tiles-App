@@ -1,0 +1,40 @@
+.formControl {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    margin: auto;
+    width: 50%;
+    height: auto;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 20px;
+    background: rgb(205, 205, 223);
+}
+
+.formControl .columnContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 10px 0px;
+}
+
+.rowContainer{
+    display: flex;
+    flex-direction: row;
+}
+
+.formControl label{
+    font-weight: bolder;
+    display: inline-block;
+}
+
+.formControl input{
+    width: 50px;
+}
+
+.formControl input[type='submit'], input[type='reset']{
+    width: 80px;
+    height: 25px;
+    font-weight: bolder;
+    margin: auto;
+    background-color: blue;
+}

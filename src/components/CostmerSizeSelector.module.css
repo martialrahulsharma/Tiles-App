@@ -1,0 +1,28 @@
+.costmerSize{
+    display: flex;
+    flex-direction: row;
+    background-color: aqua;
+    gap: 20px;
+    padding: 5px;
+}
+
+.costmerSize label{
+    font-size: larger;
+    font-weight: bold;
+    padding-left: 25px;
+}
+
+.costmerSize label:hover{
+    cursor: pointer;
+}
+
+.costmerSize input[type='radio']{
+    margin-right: 10px;
+    height: 20px;
+    width: 20px;
+    vertical-align: middle;
+}
+
+.costmerSize input[type='radio']{
+    cursor: pointer;
+}
