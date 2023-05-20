@@ -25,6 +25,7 @@ const Lapeta = () => {
   });
 
   const [outputState, setOutputState] = useState({
+    lapeta:0,
     wallSqrFt: 0,
     perBoxSqrFt: 0,
     perTileSqrFt: 0,
@@ -64,6 +65,7 @@ const Lapeta = () => {
     });
   };
   const tileLengthHandler = (tileLenght) => {
+    console.log(tileLenght);
     setTileInput((state) => {
       sessionStorage.setItem(
         "LapetaComponent",
@@ -106,10 +108,12 @@ const Lapeta = () => {
 
   const submitHandle = (event) => {
     event.preventDefault();
+    console.log(outputState.lapeta);
     let lapet = roomOf.lapeta - roomOf.doorSize;
     setUpdateCard(true);
     setOutputState((prev) => {
       return {
+        lapeta: (prev.lapeta),
         wallSqrFt: (prev.wallSqrFt = lapet * roomOf.height),
         perTileSqrFt: (prev.perTileSqrFt =
           (tileInput.tileLenght * tileInput.tileWidth) / 144),
@@ -161,7 +165,8 @@ const Lapeta = () => {
       </div>
       {updateCard && (
         <Card
-          lapetaOutputHeading="Lapeta Output"
+          OutputHeading="Lapeta Output"
+          lapeta={outputState.lapeta}
           wallSqr={outputState.wallSqrFt}
           perTileSqrFtPrice={
             outputState.perTileSqrFtPrice === "NaN"

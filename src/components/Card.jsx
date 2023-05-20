@@ -8,11 +8,19 @@ const Card = (props) => {
   return (
     <>
       <div className={classes.card}>
-      <h2>{props.lapetaOutputHeading}</h2>
+        <h2>{props.OutputHeading}</h2>
+        {console.log(props.lapeta)}
+        {props.lapeta !== 0 ? (
+          <div className={classes.rowContainer}>
+            <label>Lapeta(in sqr Ft):</label>
+            <span>{props.lapeta}</span>
+          </div>
+        ) : (
+          ""
+        )}
         <div className={classes.rowContainer}>
           <label>Wall(in sqr Ft):</label>
           <span>{props.wallSqr}</span>
-          {/* {console.log(props.wallSqr)} */}
         </div>
         <div className={classes.rowContainer}>
           <label>Rs. per sqr ft:</label>

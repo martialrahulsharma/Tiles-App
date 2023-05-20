@@ -7,7 +7,7 @@ import classes from "./TilesRelatedInput.module.css";
 
 const TilesRelatedInput = (props) => {
   // lapetaComponentTiles = JSON.parse(sessionStorage.LapetaComponent);
-
+  // console.log('lpt');
   // const [lapetaCompo, setLapetaCompo] = useState({
   //   tileLength: lapetaComponentTiles.tileLength,
   //   tileWidth: lapetaComponentTiles.tileWidth,
@@ -30,10 +30,11 @@ const TilesRelatedInput = (props) => {
       //     "LapetaComponent",
       //     JSON.stringify({ ...lapetaComponentTiles, tileLength: Number(event.target.value) })
       //   );
-      //   return {...prev, tileLength: (lapetaCompo.tileLength = event.target.value) };
+      //   return {...prev, tileLength: (lapetaCompo.tileLength = Number(event.target.value)) };
       // });
 
       // props.onLengthTile(lapetaCompo.tileLength);
+      // console.log(lapetaCompo.tileLength);
       props.onLengthTile(event.target.value);
       console.log('LapetaComponent');
     }
@@ -68,6 +69,7 @@ const TilesRelatedInput = (props) => {
             type="number"
             placeholder="Length"
             value={lengthValue}
+            // value={lapetaCompo.tileLength}
             onChange={lengthValueHandler}
           />
           <input

@@ -44,7 +44,10 @@ const LengthWidthHeight = () => {
     setRoomOf((prev) => {
       sessionStorage.setItem(
         "LWHComponent",
-        JSON.stringify({ ...LWHComponentTiles, length: Number(event.target.value) })
+        JSON.stringify({
+          ...LWHComponentTiles,
+          length: Number(event.target.value),
+        })
       );
       return { ...prev, lengths: (roomOf.lengths = event.target.value) };
     });
@@ -54,7 +57,10 @@ const LengthWidthHeight = () => {
     setRoomOf((prev) => {
       sessionStorage.setItem(
         "LWHComponent",
-        JSON.stringify({ ...LWHComponentTiles, width: Number(event.target.value) })
+        JSON.stringify({
+          ...LWHComponentTiles,
+          width: Number(event.target.value),
+        })
       );
       return { ...prev, width: (roomOf.width = event.target.value) };
     });
@@ -64,7 +70,10 @@ const LengthWidthHeight = () => {
     setRoomOf((prev) => {
       sessionStorage.setItem(
         "LWHComponent",
-        JSON.stringify({ ...LWHComponentTiles, height: Number(event.target.value) })
+        JSON.stringify({
+          ...LWHComponentTiles,
+          height: Number(event.target.value),
+        })
       );
       return { ...prev, height: (roomOf.height = event.target.value) };
     });
@@ -74,7 +83,10 @@ const LengthWidthHeight = () => {
     setRoomOf((prev) => {
       sessionStorage.setItem(
         "LWHComponent",
-        JSON.stringify({ ...LWHComponentTiles, doorSize: Number(event.target.value) })
+        JSON.stringify({
+          ...LWHComponentTiles,
+          doorSize: Number(event.target.value),
+        })
       );
       return { ...prev, doorSize: (roomOf.doorSize = event.target.value) };
     });
@@ -112,7 +124,10 @@ const LengthWidthHeight = () => {
     setTileInput((state) => {
       sessionStorage.setItem(
         "LWHComponent",
-        JSON.stringify({ ...LWHComponentTiles, tilePricePerBox: Number(tilePricePerBox) })
+        JSON.stringify({
+          ...LWHComponentTiles,
+          tilePricePerBox: Number(tilePricePerBox),
+        })
       );
       return {
         ...state,
@@ -121,77 +136,104 @@ const LengthWidthHeight = () => {
     });
   };
 
-
   const LWHSubmitHandler = (event) => {
     event.preventDefault();
     console.log("LWHSubmitHandler");
     setUpdateCard(true);
     console.log(tileInput.tileLenght);
+
+    event.preventDefault();
+    let lapet = ((roomOf.lengths*2) + (roomOf.width*2)) - roomOf.doorSize;
+    setUpdateCard(true);
+    setOutputState((prev) => {
+      return {
+        lapeta: lapet,
+        wallSqrFt: (prev.wallSqrFt = lapet * roomOf.height),
+        perTileSqrFt: (prev.perTileSqrFt =
+          (tileInput.tileLenght * tileInput.tileWidth) / 144),
+        perBoxSqrFt: (prev.perBoxSqrFt =
+          prev.perTileSqrFt * tileInput.tileInABox),
+        totalTilesBoxes: (prev.totalTilesBoxes = Math.ceil(
+          prev.wallSqrFt / prev.perBoxSqrFt
+        )),
+        perTileSqrFtPrice: Math.ceil(
+          tileInput.tilePricePerBox / prev.perBoxSqrFt
+        ).toFixed(2),
+        totalPrice: tileInput.tilePricePerBox * prev.totalTilesBoxes,
+      };
+    });
   };
 
   return (
-    <div className={classes.lwh}>
-      <form onSubmit={LWHSubmitHandler}>
-        <label>
-          Enter Length, Width, Height
-          <input
-            type="number"
-            value={roomOf.lengths}
-            onChange={lengthHandler}
-            placeholder="length"
+    <>
+      <div className={classes.lwh}>
+        <form onSubmit={LWHSubmitHandler}>
+          <label>
+            Enter Length, Width, Height
+            <input
+              type="number"
+              value={roomOf.lengths}
+              onChange={lengthHandler}
+              placeholder="length"
+            />
+            <input
+              type="number"
+              value={roomOf.width}
+              onChange={widthHandler}
+              placeholder="width"
+            />
+            <input
+              type="number"
+              value={roomOf.height}
+              onChange={heightHandler}
+              placeholder="height"
+            />
+          </label>
+          <label>
+            Enter Door Size
+            <input
+              type="number"
+              value={roomOf.doorSize}
+              onChange={lwhDoorSizeHandler}
+            />
+          </label>
+          <TilesRelatedInput
+            LWHComponent="LWHComponent"
+            length={roomOf.lengths}
+            width={roomOf.width}
+            height={roomOf.height}
+            doorSize={roomOf.doorSize}
+            onLengthTile={tileLengthHandler}
+            onWidthTile={tileWidthHandler}
+            onTileInABox={tileInABoxHandler}
+            onTilePricePerBox={tilePricePerBoxHandler}
           />
-          <input
-            type="number"
-            value={roomOf.width}
-            onChange={widthHandler}
-            placeholder="width"
-          />
-          <input
-            type="number"
-            value={roomOf.height}
-            onChange={heightHandler}
-            placeholder="height"
-          />
-        </label>
-        <label>
-          Enter Door Size
-          <input type="number" value={roomOf.doorSize} onChange={lwhDoorSizeHandler} />
-        </label>
-        <TilesRelatedInput
-          LWHComponent="LWHComponent"
-          length={roomOf.lengths}
-          width={roomOf.width}
-          height={roomOf.height}
-          doorSize={roomOf.doorSize}
-          onLengthTile={tileLengthHandler}
-          onWidthTile={tileWidthHandler}
-          onTileInABox={tileInABoxHandler}
-          onTilePricePerBox={tilePricePerBoxHandler}
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+      {updateCard && (
+        <Card
+          OutputHeading="LWH Output"
+          lapeta={outputState.lapeta}
+          wallSqr={outputState.wallSqrFt}
+          perTileSqrFtPrice={
+            outputState.perTileSqrFtPrice === "NaN"
+              ? 0
+              : outputState.perTileSqrFtPrice
+          }
+          perBoxSqrFt={outputState.perBoxSqrFt}
+          perTileSqrFt={outputState.perTileSqrFt}
+          totalTilesBoxes={
+            outputState.totalTilesBoxes === Infinity
+              ? 0
+              : outputState.totalTilesBoxes
+          }
+          totalPrice={
+            isNaN(outputState.totalPrice) ? 0 : outputState.totalPrice
+          }
         />
-        <button type="submit">Submit</button>
-      </form>
-    </div>
-    // {updateCard && (
-    //   <Card
-    //     lwhOutputHeading="LWH Output"
-    //     wallSqr={outputState.wallSqrFt}
-    //     perTileSqrFtPrice={
-    //       outputState.perTileSqrFtPrice === "NaN"
-    //         ? 0
-    //         : outputState.perTileSqrFtPrice
-    //     }
-    //     perBoxSqrFt={outputState.perBoxSqrFt}
-    //     perTileSqrFt={outputState.perTileSqrFt}
-    //     totalTilesBoxes={
-    //       outputState.totalTilesBoxes === Infinity
-    //         ? 0
-    //         : outputState.totalTilesBoxes
-    //     }
-    //     totalPrice={
-    //       isNaN(outputState.totalPrice) ? 0 : outputState.totalPrice
-    //     }
-    //   />
-    // )}
+      )}
+    </>
   );
 };
 
