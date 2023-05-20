@@ -18,10 +18,10 @@ const Card = (props) => {
         ) : (
           ""
         )}
-        <div className={classes.rowContainer}>
+        {props.wallSqr !== '0' ? <div className={classes.rowContainer}>
           <label>Wall(in sqr Ft):</label>
           <span>{props.wallSqr}</span>
-        </div>
+        </div> : ""}
         <div className={classes.rowContainer}>
           <label>Rs. per sqr ft:</label>
           {props.perTileSqrFtPrice}

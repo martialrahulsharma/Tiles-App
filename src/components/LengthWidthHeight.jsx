@@ -40,7 +40,6 @@ const LengthWidthHeight = () => {
   // const [doorSize, setDoorSize] = useState("");
 
   const lengthHandler = (event) => {
-    // setLength(event.target.value);
     setRoomOf((prev) => {
       sessionStorage.setItem(
         "LWHComponent",

@@ -22,8 +22,9 @@ const TilesRelatedInput = (props) => {
   const [tilesPricePerBox, setTilesPricePerBox] = useState(0);
 
   const lengthValueHandler = (event) => {
-    if(props.lapetaComponent == 'LapetaComponent'){
-      setLengthValue(event.target.value);
+    setLengthValue(event.target.value);
+    props.onLengthTile(event.target.value);
+    // if(props.lapetaComponent == 'LapetaComponent'){
 
       // setLapetaCompo((prev) => {
       //   sessionStorage.setItem(
@@ -35,14 +36,13 @@ const TilesRelatedInput = (props) => {
 
       // props.onLengthTile(lapetaCompo.tileLength);
       // console.log(lapetaCompo.tileLength);
-      props.onLengthTile(event.target.value);
-      console.log('LapetaComponent');
-    }
-    if(props.LWHComponent == 'LWHComponent'){
-      setLengthValue(event.target.value);
-      props.onLengthTile(event.target.value);
-      console.log('LWHComponent');
-    }
+    //   console.log('LapetaComponent');
+    // }
+    // if(props.LWHComponent == 'LWHComponent'){
+    //   setLengthValue(event.target.value);
+    //   props.onLengthTile(event.target.value);
+    //   console.log('LWHComponent');
+    // }
   };
 
   const widthValueHandler = (event) => {
