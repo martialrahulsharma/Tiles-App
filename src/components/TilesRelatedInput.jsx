@@ -39,7 +39,7 @@ const TilesRelatedInput = (props) => {
     }
     if(props.LWHComponent == 'LWHComponent'){
       setLengthValue(event.target.value);
-      // props.onLengthTile(event.target.value);
+      props.onLengthTile(event.target.value);
       console.log('LWHComponent');
     }
   };
