@@ -1,11 +1,5 @@
-import React, { useState } from "react";
-import ShowTilesDetails from "./components/ShowTilesDetails";
-import Card from "./components/Card";
+import React from "react";
 import CostmerSizeSelector from "./components/CostmerSizeSelector";
-import Lapeta from "./components/Lapeta";
-import LengthWidthHeight from "./components/LengthWidthHeight";
-import SquareFeet from "./components/SquareFeet";
-import LengthWidth from "./components/LengthWidth";
 import "../src/App.css";
 
 sessionStorage.setItem(
@@ -55,7 +49,19 @@ sessionStorage.setItem(
     tilePricePerBox: 0,
   })
 );
-let costmerSizeProvided = ["Lapeta", "LWH", "Sqr Ft", "LW"];
+sessionStorage.setItem(
+  "DHLComponent",
+  JSON.stringify({
+    length: 0,
+    width: 0,
+    height: 0,
+    tileLength: 0,
+    tileWidth: 0,
+    tileInABox: 0,
+    tilePricePerBox: 0,
+  })
+);
+let costmerSizeProvided = ["Lapeta", "LWH", "Sqr Ft", "LW", "DHL"];
 
 function App() {
   return (

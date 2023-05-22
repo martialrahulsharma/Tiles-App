@@ -3,6 +3,7 @@ import Lapeta from "./Lapeta";
 import LengthWidthHeight from "./LengthWidthHeight";
 import SquareFeet from "./SquareFeet";
 import LengthWidth from "./LengthWidth";
+import DarkHighLite from './DarkHighLite'
 import classes from "./CostmerSizeSelector.module.css";
 import { useState } from "react";
 
@@ -11,6 +12,7 @@ const CostmerSizeSelector = (props) => {
   const [LWHVisibility, setLWHVisibility] = useState(false);
   const [squareFeetVisibility, setsquareFeetVisibility] = useState(false);
   const [LWVisibility, setLWVisibility] = useState(false);
+  const [DHLVisibility, setDHLVisibility] = useState(false);
   
   const costmerSizeHandler = (costmerSize) => (event) => {
     if (costmerSize == "Lapeta") {
@@ -18,6 +20,7 @@ const CostmerSizeSelector = (props) => {
       setLWHVisibility(false);
       setsquareFeetVisibility(false);
       setLWVisibility(false);
+      setDHLVisibility(false);
       return;
     }
     if (costmerSize == "LWH") {
@@ -25,6 +28,7 @@ const CostmerSizeSelector = (props) => {
       setlapetaVisibility(false);
       setsquareFeetVisibility(false);
       setLWVisibility(false);
+      setDHLVisibility(false);
       return;
     }
     if (costmerSize == "Sqr Ft") {
@@ -32,10 +36,20 @@ const CostmerSizeSelector = (props) => {
       setlapetaVisibility(false);
       setLWHVisibility(false);
       setLWVisibility(false);
+      setDHLVisibility(false);
       return;
     }
     if (costmerSize == "LW") {
       setLWVisibility(true);
+      setlapetaVisibility(false);
+      setLWHVisibility(false);
+      setsquareFeetVisibility(false);
+      setDHLVisibility(false);
+      return;
+    }
+    if (costmerSize == "DHL") {
+      setDHLVisibility(true);
+      setLWVisibility(false);
       setlapetaVisibility(false);
       setLWHVisibility(false);
       setsquareFeetVisibility(false);
@@ -66,6 +80,7 @@ const CostmerSizeSelector = (props) => {
       {LWHVisibility && <LengthWidthHeight />}
       {squareFeetVisibility && <SquareFeet />}
       {LWVisibility && <LengthWidth />}
+      {DHLVisibility && <DarkHighLite />}
     </>
   );
 };
