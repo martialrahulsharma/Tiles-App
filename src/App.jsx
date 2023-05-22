@@ -44,6 +44,17 @@ sessionStorage.setItem(
     tilePricePerBox: 0,
   })
 );
+sessionStorage.setItem(
+  "LWComponent",
+  JSON.stringify({
+    length: 0,
+    width: 0,
+    tileLength: 0,
+    tileWidth: 0,
+    tileInABox: 0,
+    tilePricePerBox: 0,
+  })
+);
 let costmerSizeProvided = ["Lapeta", "LWH", "Sqr Ft", "LW"];
 
 function App() {
