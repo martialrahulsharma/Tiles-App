@@ -9,7 +9,6 @@ const Card = (props) => {
     <>
       <div className={classes.card}>
         <h2>{props.OutputHeading}</h2>
-        {console.log(props.lapeta)}
         {props.lapeta !== 0 ? (
           <div className={classes.rowContainer}>
             <label>Lapeta(in sqr Ft):</label>

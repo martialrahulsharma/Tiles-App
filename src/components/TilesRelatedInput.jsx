@@ -24,25 +24,6 @@ const TilesRelatedInput = (props) => {
   const lengthValueHandler = (event) => {
     setLengthValue(event.target.value);
     props.onLengthTile(event.target.value);
-    // if(props.lapetaComponent == 'LapetaComponent'){
-
-      // setLapetaCompo((prev) => {
-      //   sessionStorage.setItem(
-      //     "LapetaComponent",
-      //     JSON.stringify({ ...lapetaComponentTiles, tileLength: Number(event.target.value) })
-      //   );
-      //   return {...prev, tileLength: (lapetaCompo.tileLength = Number(event.target.value)) };
-      // });
-
-      // props.onLengthTile(lapetaCompo.tileLength);
-      // console.log(lapetaCompo.tileLength);
-    //   console.log('LapetaComponent');
-    // }
-    // if(props.LWHComponent == 'LWHComponent'){
-    //   setLengthValue(event.target.value);
-    //   props.onLengthTile(event.target.value);
-    //   console.log('LWHComponent');
-    // }
   };
 
   const widthValueHandler = (event) => {
@@ -62,7 +43,7 @@ const TilesRelatedInput = (props) => {
 
   return (
     <div className={classes.tilesRelated}>
-      
+      <div>
         <label>
           Enter Tile size (in inch)
           <input
@@ -79,6 +60,8 @@ const TilesRelatedInput = (props) => {
             onChange={widthValueHandler}
           />
         </label>
+      </div>
+      <div>
         <label>
           Tiles in a box
           <input
@@ -95,6 +78,7 @@ const TilesRelatedInput = (props) => {
             onChange={tilePriceHandler}  
           />
         </label>
+      </div>
     </div>
   );
 };

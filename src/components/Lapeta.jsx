@@ -134,6 +134,7 @@ const Lapeta = () => {
     <>
       <div className={classes.lapeta}>
         <form onSubmit={submitHandle}>
+          <div>
           <label>
             Enter Lapeta
             <input
@@ -146,10 +147,13 @@ const Lapeta = () => {
             Enter Height
             <input type="number" value={roomOf.height} onChange={heightHandler} />
           </label>
+          </div>
+          <div>
           <label>
             Enter Door Size
             <input type="number" value={roomOf.doorSize} onChange={doorSizeHandler} />
           </label>
+          </div>
           <TilesRelatedInput
             lapetaComponent='LapetaComponent'
             lapeta={roomOf.lapeta}

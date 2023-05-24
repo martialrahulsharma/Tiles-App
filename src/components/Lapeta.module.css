@@ -12,7 +12,12 @@
     /* margin-left: 50px; */
 }
 
+.lapeta label:nth-child(2){
+    margin-left: 20px;
+}
+
 .lapeta input[type='number']{
     width: 100px;
     padding: 0px 5px 0px 5px;
+    margin-left: 10px;
 }
