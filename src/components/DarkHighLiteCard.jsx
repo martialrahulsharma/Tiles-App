@@ -14,7 +14,7 @@ const DarkHighLiteCard = (props) =>{
         <div className={classes.rowContainer}>
           
           <label>{props.heading} Boxes:</label>
-          {props.totalTilesBoxes}
+          {props.darkBoxes}
         </div>
         
       </div>

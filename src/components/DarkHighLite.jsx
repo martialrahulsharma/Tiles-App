@@ -2,10 +2,14 @@ import React, { useState } from "react";
 import Card from "./Card";
 import TilesRelatedInput from "./TilesRelatedInput";
 import DarkHighLiteCard from "./DarkHighLiteCard";
+import DarkTile from "./DHL/DarkTile";
+// import HighlightTile from "./DHL/HighLightTile";
+// import LightTile from "./DHL/LightTile";
 import classes from "./DarkHighLite.module.css";
 
 let LWHComponentTiles;
-let wallDropdownArrayData = [];
+let roomWallSqft = 0;
+let remainRoomWallSqft = 0;
 
 const DarkHighLite = () => {
   LWHComponentTiles = JSON.parse(sessionStorage.LWHComponent);
@@ -23,14 +27,14 @@ const DarkHighLite = () => {
     tileInABox: LWHComponentTiles.tileInABox,
     tilePricePerBox: LWHComponentTiles.tilePricePerBox,
   });
-  const [wallSelect, setWallSelect] = useState("");
-  const [dark, setDark] = useState({
+  const [darkTile, setDarkTile] = useState({
     height: "",
     width: "",
     tileAxis: "Horizontal",
-    wallNo: "",
     numberOfWall: 1,
+    setNumberOfWall: 4,
   });
+
   const [outputState, setOutputState] = useState({
     lapeta: 0,
     wallSqrFt: 0,
@@ -46,8 +50,6 @@ const DarkHighLite = () => {
     highLightBoxes: 0,
     lightSqft: 0,
     lightBoxes: 0,
-    
-    
   });
 
   const [updateCard, setUpdateCard] = useState(false);
@@ -155,67 +157,64 @@ const DarkHighLite = () => {
     });
   };
 
-  const darkInputHeightHandler = (event) => {
-    setDark((prev) => {
-      return { ...prev, height: (dark.height = event.target.value) };
+  const darkHeightHandler = (darkHeight) => {
+    setDarkTile((prev) => {
+      return { ...prev, height: (prev.height = darkHeight) };
     });
   };
-
-  const darkInputWidthHandler = (event) => {
-    setDark((prev) => {
-      return { ...prev, width: (dark.width = event.target.value) };
+  const darkWidthHandler = (darkWidth) => {
+    setDarkTile((prev) => {
+      return { ...prev, width: (prev.width = darkWidth) };
     });
   };
-  const darkTileAxishHandler = (event) => {
-    setDark((prev) => {
-      return { ...prev, tileAxis: (dark.tileAxis = event.target.value) };
+  const darkAxisHandler = (darkAxis) => {
+    setDarkTile((prev) => {
+      return { ...prev, tileAxis: (prev.tileAxis = darkAxis) };
     });
   };
-  const darkWallNumberHandler = (event) => {
-    setDark((prev) => {
-      return { ...prev, wallNo: (dark.wallNo = event.target.value) };
+  const darkNumberOfWallHandler = (darkNumberOfWall) => {
+    setDarkTile((prev) => {
+      return { ...prev, numberOfWall: (prev.numberOfWall = darkNumberOfWall) };
     });
   };
-  const darkNumberOfWallHandler = (event) => {
-    setDark((prev) => {
-      return { ...prev, numberOfWall: (dark.numberOfWall = event.target.value) };
-    });
-  };
-
-  const putDataInWallSelectHandler = (arr) => {
-    if (roomOf.width && roomOf.lengths) {
-      wallDropdownArrayData = [
-        roomOf.width,
-        roomOf.lengths,
-        roomOf.lengths + " & " + roomOf.width,
-        roomOf.width + " Both",
-        roomOf.lengths + " Both",
-      ];
-      setDark((prev) => {
-        return { ...prev, wallNo: (dark.wallNo = wallDropdownArrayData[0]) };
-      });
-    }
-  };
-
-  const LWHSubmitHandler = (event) => {
-    // console.log(wallDropdownArrayData);
-    console.log(dark);
+  const DHLSubmitHandler = (event) => {
     event.preventDefault();
-    // console.log("LWHSubmitHandler");
+    // console.log(darkTile.width);
     setUpdateCard(true);
-    // console.log(tileInput.tileLenght);
-
-    event.preventDefault();
-    if(dark.height > roomOf.height){
-      alert('check dark height');
-      return;
-    }
-    if(dark.width > roomOf.width){
-      alert('check dark width');
-      return;
-    }
-    let drksqft = dark.height*dark.width
     let lapet = roomOf.lengths * 2 + roomOf.width * 2 - roomOf.doorSize;
+    roomWallSqft = roomOf.height * lapet;
+    if (darkTile.height > roomOf.height) {
+      alert("check dark height");
+      return;
+    }
+
+    if (darkTile.numberOfWall > darkTile.setNumberOfWall) {
+      alert("Number of wall should be less than 4 or equal");
+      return;
+    }
+
+    if (darkTile.numberOfWall == 1) {
+      if(Number(darkTile.width) <= Number(roomOf.width)){
+        outputState.darkSqft = darkTile.height * darkTile.width
+      }else{
+        alert("Dark width should be equal or less than room width");
+        return;
+      }
+    }
+    if (darkTile.numberOfWall == 2) {
+      outputState.darkSqft = darkTile.height * darkTile.width * 2;
+    }
+    if (darkTile.numberOfWall == 3) {
+      outputState.darkSqft = darkTile.height * darkTile.width;
+    }
+
+    if (darkTile.numberOfWall == 4) {
+      outputState.darkSqft = darkTile.height * lapet;
+    }
+
+    remainRoomWallSqft = roomWallSqft - outputState.darkSqft;
+    
+
     setUpdateCard(true);
     setOutputState((prev) => {
       return {
@@ -232,6 +231,11 @@ const DarkHighLite = () => {
           tileInput.tilePricePerBox / prev.perBoxSqrFt
         ).toFixed(2),
         totalPrice: tileInput.tilePricePerBox * prev.totalTilesBoxes,
+
+        darkSqft: prev.darkSqft,
+        darkBoxes: (prev.darkBoxes = Math.ceil(
+          prev.darkSqft / prev.perBoxSqrFt
+        )),
       };
     });
   };
@@ -239,7 +243,7 @@ const DarkHighLite = () => {
   return (
     <>
       <div className={classes.lwh}>
-        <form onSubmit={LWHSubmitHandler}>
+        <form onSubmit={DHLSubmitHandler}>
           <label>
             Enter Length, Width, Height
             <input
@@ -247,14 +251,12 @@ const DarkHighLite = () => {
               value={roomOf.lengths}
               onChange={lengthHandler}
               placeholder="length"
-              onBlur={putDataInWallSelectHandler}
             />
             <input
               type="number"
               value={roomOf.width}
               onChange={widthHandler}
               placeholder="width"
-              onBlur={putDataInWallSelectHandler}
             />
             <input
               type="number"
@@ -282,125 +284,22 @@ const DarkHighLite = () => {
             onTileInABox={tileInABoxHandler}
             onTilePricePerBox={tilePricePerBoxHandler}
           />
-          <div>
-
-          <label>Dark</label>
-          <input
-            type="number"
-            value={dark.height}
-            onChange={darkInputHeightHandler}
-            placeholder="Height"
+          <DarkTile
+            darkTotalBox={outputState.darkBoxes}
+            darkSqft={outputState.darkSqft}
+            // onDarkHandler={darkHandler}
+            onDarkHeightHandler={darkHeightHandler}
+            onDarkWidthHandler={darkWidthHandler}
+            onDarkAxisHandler={darkAxisHandler}
+            onDarkNumberOfWallHandler={darkNumberOfWallHandler}
           />
-          <input
-            type="number"
-            value={dark.width}
-            onChange={darkInputWidthHandler}
-            placeholder="width"
-          />
-          <select
-            name="hrVr"
-            value={dark.tileAxis}
-            onChange={darkTileAxishHandler}
-          >
-            <option value="Horizontal">Horizontal</option>
-            <option value="Vertical">Vertical</option>
-          </select>
 
-          <input type='number' value={dark.numberOfWall } placeholder='number of wall' onChange={darkNumberOfWallHandler} />
-
-          <select
-            name="wall"
-            value={dark.wallNo}
-            onChange={darkWallNumberHandler}
-          >
-            <option>Select Wall</option>
-            {wallDropdownArrayData.map((item, index) => {
-              return <option key={index}>{item}</option>;
-            })}
-          </select>
-          </div>
-          {/* highLighter start */}
-          <div>
-
-          <label>High Lighter</label>
-          <input
-            type="number"
-            value={dark.height}
-            onChange={darkInputHeightHandler}
-            placeholder="Height"
-          />
-          <input
-            type="number"
-            value={dark.width}
-            onChange={darkInputWidthHandler}
-            placeholder="width"
-          />
-          <select
-            name="hrVr"
-            value={dark.tileAxis}
-            onChange={darkTileAxishHandler}
-          >
-            <option value="Horizontal">Horizontal</option>
-            <option value="Vertical">Vertical</option>
-          </select>
-
-          <input type='number' value={dark.numberOfWall } placeholder='number of wall' onChange={darkNumberOfWallHandler} />
-
-          <select
-            name="wall"
-            value={dark.wallNo}
-            onChange={darkWallNumberHandler}
-          >
-            <option>Select Wall</option>
-            {wallDropdownArrayData.map((item, index) => {
-              return <option key={index}>{item}</option>;
-            })}
-          </select>
-          </div>
-          {/* lighter start */}
-          <div>
-
-          <label>Lighter</label>
-          <input
-            type="number"
-            value={dark.height}
-            onChange={darkInputHeightHandler}
-            placeholder="Height"
-          />
-          <input
-            type="number"
-            value={dark.width}
-            onChange={darkInputWidthHandler}
-            placeholder="width"
-          />
-          <select
-            name="hrVr"
-            value={dark.tileAxis}
-            onChange={darkTileAxishHandler}
-          >
-            <option value="Horizontal">Horizontal</option>
-            <option value="Vertical">Vertical</option>
-          </select>
-
-          <input type='number' value={dark.numberOfWall } placeholder='number of wall' onChange={darkNumberOfWallHandler} />
-
-          <select
-            name="wall"
-            value={dark.wallNo}
-            onChange={darkWallNumberHandler}
-          >
-            <option>Select Wall</option>
-            {wallDropdownArrayData.map((item, index) => {
-              return <option key={index}>{item}</option>;
-            })}
-          </select>
-          </div>
           <button type="submit">Submit</button>
         </form>
       </div>
       {updateCard && (
         <Card
-          OutputHeading="LWH Output"
+          OutputHeading="DHL Output"
           lapeta={outputState.lapeta}
           wallSqr={outputState.wallSqrFt}
           perTileSqrFtPrice={
@@ -419,11 +318,16 @@ const DarkHighLite = () => {
             isNaN(outputState.totalPrice) ? 0 : outputState.totalPrice
           }
         />
-      )
+      )}
+      {
+        <DarkHighLiteCard
+          heading={"Dark"}
+          sqrft={outputState.darkSqft}
+          darkBoxes={outputState.darkBoxes}
+        />
       }
-      { <DarkHighLiteCard heading={'Dark'} sqrft={'152'} boxes={'20'}/>}
-      { <DarkHighLiteCard heading={'Highlight'} sqrft={'152'} boxes={'20'}/>}
-      { <DarkHighLiteCard heading={'Light'} sqrft={'152'} boxes={'20'}/>}
+      {<DarkHighLiteCard heading={"Highlight"} sqrft={"152"} boxes={"20"} />}
+      {<DarkHighLiteCard heading={"Light"} sqrft={"152"} boxes={"20"} />}
     </>
   );
 };
