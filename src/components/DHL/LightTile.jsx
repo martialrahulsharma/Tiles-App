@@ -13,6 +13,12 @@ const LightTile = (props) => {
   const [lightWidth, setLightWidth] = useState("");
   const [lightAxis, setLightAxis] = useState("Horizontal");
   const [lightNumberOfWall, setLightNumberOfWall] = useState(1);
+  const [lightCheckbox, setlightCheckbox] = useState(false);
+
+  const lightCheckboxHandler = (event) =>{
+    setlightCheckbox(event.target.checked);
+    props.onCheckbox(event.target.checked);
+  }
 
   const lightInputHeightHandler = (event) => {
     setLightHight(event.target.value);
@@ -34,7 +40,8 @@ const LightTile = (props) => {
 
   return (
     <>
-      <div className={classes.dark}>
+      {/* <div className={classes.dark}> */}
+      <input type='checkbox' checked={lightCheckbox} onChange={lightCheckboxHandler} />
         <label>Light</label>
         <input
           type="number"
@@ -63,7 +70,7 @@ const LightTile = (props) => {
           placeholder="number of wall"
           onChange={lightNumberOfWallHandler}
         />
-      </div>
+      {/* </div> */}
     </>
   );
 };

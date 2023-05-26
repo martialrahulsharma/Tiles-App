@@ -7,6 +7,12 @@ const DarkTile = (props) => {
   const [darkWidth, setDarkWidth] = useState("");
   const [darkAxis, setDarkAxis] = useState("Horizontal");
   const [darkNumberOfWall, setDarkNumberOfWall] = useState(1);
+  const [darkCheckbox, setDarkCheckbox] = useState(false);
+
+  const darkCheckboxHandler = (event) =>{
+    setDarkCheckbox(event.target.checked);
+    props.onCheckbox(event.target.checked);
+  }
 
   const darkInputHeightHandler = (event) => {
     setDarkHight(event.target.value);
@@ -28,7 +34,8 @@ const DarkTile = (props) => {
 
   return (
     <>
-      <div className={classes.dark}>
+      {/* <div className={classes.dark}> */}
+        <input type='checkbox' checked={darkCheckbox} onChange={darkCheckboxHandler} />
         <label>Dark</label>
         <input
           type="number"
@@ -57,7 +64,7 @@ const DarkTile = (props) => {
           placeholder="number of wall"
           onChange={darkNumberOfWallHandler}
         />
-      </div>
+      {/* </div> */}
     </>
   );
 };
