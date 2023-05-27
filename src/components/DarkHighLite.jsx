@@ -278,7 +278,14 @@ const DarkHighLite = () => {
     let lapet = roomOf.lengths * 2 + roomOf.width * 2 - roomOf.doorSize;
     remainRoomWallSqft.wall = roomOf.height * lapet;
     console.log(remainRoomWallSqft.wall);
-//--------------Dark condition start--------
+    // reset DHL data first
+    outputState.darkSqft = 0;
+    outputState.darkBoxes = 0;
+    outputState.highLightSqft = 0;
+    outputState.highLightBoxes = 0;
+    outputState.lightSqft = 0;
+    outputState.lightBoxes = 0;
+    //--------------Dark condition start--------
     if (darkTile.checkbox == true && remainRoomWallSqft.wall != 0) {
       if ((darkTile.height && darkTile.width) != "") {
         console.log("if");
@@ -295,7 +302,8 @@ const DarkHighLite = () => {
         if (darkTile.numberOfWall == 1) {
           if (Number(darkTile.width) <= Number(roomOf.width)) {
             outputState.darkSqft = darkTile.height * darkTile.width;
-            remainRoomWallSqft.wall = remainRoomWallSqft.wall - outputState.darkSqft;
+            remainRoomWallSqft.wall =
+              remainRoomWallSqft.wall - outputState.darkSqft;
           } else {
             alert("Dark width should be equal or less than room width");
             return;
@@ -303,30 +311,29 @@ const DarkHighLite = () => {
         }
         if (darkTile.numberOfWall == 2) {
           outputState.darkSqft = darkTile.height * darkTile.width * 2;
-          remainRoomWallSqft.wall = remainRoomWallSqft.wall - outputState.darkSqft;
+          remainRoomWallSqft.wall =
+            remainRoomWallSqft.wall - outputState.darkSqft;
         }
         if (darkTile.numberOfWall == 3) {
           outputState.darkSqft = darkTile.height * darkTile.width;
-          remainRoomWallSqft.wall = remainRoomWallSqft.wall - outputState.darkSqft;
+          remainRoomWallSqft.wall =
+            remainRoomWallSqft.wall - outputState.darkSqft;
         }
 
         if (darkTile.numberOfWall == 4) {
           outputState.darkSqft = darkTile.height * lapet;
-          remainRoomWallSqft.wall = remainRoomWallSqft.wall - outputState.darkSqft;
+          remainRoomWallSqft.wall =
+            remainRoomWallSqft.wall - outputState.darkSqft;
         }
-      } else {
-        outputState.darkSqft = remainRoomWallSqft.wall;
-        remainRoomWallSqft.wall = 0;
-        // outputState.highLightSqft = 0;
-        // outputState.highLightBoxes = 0;
-        // outputState.lightSqft = 0;
-        // outputState.lightBoxes = 0;
       }
+      console.log("in");
+    } else {
+      console.log("in else");
     }
-//--------------Dark condition end--------    
-//--------------HighLight condition start--------
+    //--------------Dark condition end--------
+    //--------------HighLight condition start--------
     if (highLightTile.checkbox == true && remainRoomWallSqft.wall != 0) {
-      console.log('highlight');
+      console.log("highlight");
       if ((highLightTile.height && highLightTile.width) != "") {
         console.log("highlight if");
         if (highLightTile.height > roomOf.height) {
@@ -341,37 +348,37 @@ const DarkHighLite = () => {
 
         if (highLightTile.numberOfWall == 1) {
           if (Number(highLightTile.width) <= Number(roomOf.width)) {
-            outputState.highLightSqft = highLightTile.height * highLightTile.width;
-            remainRoomWallSqft.wall = remainRoomWallSqft.wall - outputState.highLightSqft;
+            outputState.highLightSqft =
+              highLightTile.height * highLightTile.width;
+            remainRoomWallSqft.wall =
+              remainRoomWallSqft.wall - outputState.highLightSqft;
           } else {
             alert("Dark width should be equal or less than room width");
             return;
           }
         }
         if (highLightTile.numberOfWall == 2) {
-          outputState.highLightSqft = highLightTile.height * highLightTile.width * 2;
-          remainRoomWallSqft.wall = remainRoomWallSqft.wall - outputState.highLightSqft;
+          outputState.highLightSqft =
+            highLightTile.height * highLightTile.width * 2;
+          remainRoomWallSqft.wall =
+            remainRoomWallSqft.wall - outputState.highLightSqft;
         }
         if (highLightTile.numberOfWall == 3) {
-          outputState.highLightSqft = highLightTile.height * highLightTile.width;
-          remainRoomWallSqft.wall = remainRoomWallSqft.wall - outputState.highLightSqft;
+          outputState.highLightSqft =
+            highLightTile.height * highLightTile.width;
+          remainRoomWallSqft.wall =
+            remainRoomWallSqft.wall - outputState.highLightSqft;
         }
 
         if (highLightTile.numberOfWall == 4) {
           outputState.highLightSqft = highLightTile.height * lapet;
-          remainRoomWallSqft.wall = remainRoomWallSqft.wall - outputState.highLightSqft;
+          remainRoomWallSqft.wall =
+            remainRoomWallSqft.wall - outputState.highLightSqft;
         }
-      } else {
-        outputState.highLightSqft = remainRoomWallSqft.wall;
-        remainRoomWallSqft.wall = 0;
-        // outputState.lightSqft = 0;
-        // outputState.lightBoxes = 0;
-        // outputState.darkSqft = 0;
-        // outputState.darkBoxes = 0;
       }
     }
-//--------------HighLight condition end--------    
-//--------------Light condition start--------
+    //--------------HighLight condition end--------
+    //--------------Light condition start--------
     if (lightTile.checkbox == true && remainRoomWallSqft.wall != 0) {
       if ((lightTile.height && lightTile.width) != "") {
         console.log("if");
@@ -388,7 +395,8 @@ const DarkHighLite = () => {
         if (lightTile.numberOfWall == 1) {
           if (Number(lightTile.width) <= Number(roomOf.width)) {
             outputState.lightSqft = lightTile.height * lightTile.width;
-            remainRoomWallSqft.wall = remainRoomWallSqft.wall - outputState.lightSqft;
+            remainRoomWallSqft.wall =
+              remainRoomWallSqft.wall - outputState.lightSqft;
           } else {
             alert("Dark width should be equal or less than room width");
             return;
@@ -396,39 +404,60 @@ const DarkHighLite = () => {
         }
         if (lightTile.numberOfWall == 2) {
           outputState.lightSqft = lightTile.height * lightTile.width * 2;
-          remainRoomWallSqft.wall = remainRoomWallSqft.wall - outputState.lightSqft;
+          remainRoomWallSqft.wall =
+            remainRoomWallSqft.wall - outputState.lightSqft;
         }
         if (lightTile.numberOfWall == 3) {
           outputState.lightSqft = lightTile.height * lightTile.width;
-          remainRoomWallSqft.wall = remainRoomWallSqft.wall - outputState.lightSqft;
+          remainRoomWallSqft.wall =
+            remainRoomWallSqft.wall - outputState.lightSqft;
         }
 
         if (lightTile.numberOfWall == 4) {
           outputState.lightSqft = lightTile.height * lapet;
-          remainRoomWallSqft.wall = remainRoomWallSqft.wall - outputState.lightSqft;
+          remainRoomWallSqft.wall =
+            remainRoomWallSqft.wall - outputState.lightSqft;
         }
-      } else {
-        outputState.lightSqft = remainRoomWallSqft.wall;
-        remainRoomWallSqft.wall = 0;
-        // outputState.darkSqft = 0;
-        // outputState.darkBoxes = 0;
-        // outputState.highLightSqft = 0;
-        // outputState.highLightBoxes = 0;
       }
     }
-//--------------Light condition end--------    
+    //--------------Light condition end--------
+//-----DHL start when only DHL checked and value is empty-----
+    if (
+      darkTile.checkbox == true &&
+      (darkTile.height && darkTile.width) == ""
+    ) {
+      outputState.darkSqft = remainRoomWallSqft.wall;
+      remainRoomWallSqft.wall = 0;
+    }
 
-    // remainRoomWallSqft = roomWallSqft - outputState.darkSqft;
+    if (
+      highLightTile.checkbox == true &&
+      (highLightTile.height && highLightTile.width) == ""
+    ) {
+      outputState.highLightSqft = remainRoomWallSqft.wall;
+      remainRoomWallSqft.wall = 0;
+    }
 
+    if (
+      lightTile.checkbox == true &&
+      (lightTile.height && lightTile.width) == ""
+    ) {
+      outputState.lightSqft = remainRoomWallSqft.wall;
+      remainRoomWallSqft.wall = 0;
+    }
+    //-----DHL end when only DHL checked and value is empty-----
     setUpdateCard(true);
     setOutputState((prev) => {
       return {
         lapeta: lapet,
         wallSqrFt: (prev.wallSqrFt = lapet * roomOf.height),
-        perTileSqrFt: (prev.perTileSqrFt =
-          (tileInput.tileLenght * tileInput.tileWidth) / 144),
-        perBoxSqrFt: (prev.perBoxSqrFt =
-          prev.perTileSqrFt * tileInput.tileInABox),
+        perTileSqrFt: (prev.perTileSqrFt = (
+          (tileInput.tileLenght * tileInput.tileWidth) /
+          144
+        ).toFixed(2)),
+        perBoxSqrFt: (prev.perBoxSqrFt = (
+          prev.perTileSqrFt * tileInput.tileInABox
+        ).toFixed(2)),
         totalTilesBoxes: (prev.totalTilesBoxes = Math.ceil(
           prev.wallSqrFt / prev.perBoxSqrFt
         )),
@@ -561,8 +590,20 @@ const DarkHighLite = () => {
           darkBoxes={outputState.darkBoxes}
         />
       }
-      {<DarkHighLiteCard heading={"Highlight"} sqrft={outputState.highLightSqft} darkBoxes={outputState.highLightBoxes} />}
-      {<DarkHighLiteCard heading={"Light"} sqrft={outputState.lightSqft} darkBoxes={outputState.lightBoxes} />}
+      {
+        <DarkHighLiteCard
+          heading={"Highlight"}
+          sqrft={outputState.highLightSqft}
+          darkBoxes={outputState.highLightBoxes}
+        />
+      }
+      {
+        <DarkHighLiteCard
+          heading={"Light"}
+          sqrft={outputState.lightSqft}
+          darkBoxes={outputState.lightBoxes}
+        />
+      }
     </>
   );
 };
