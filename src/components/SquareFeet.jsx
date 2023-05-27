@@ -9,9 +9,6 @@ const SquareFeet = () => {
   SqrFtComponentTiles = JSON.parse(sessionStorage.SqrFtComponent);
   const [roomOf, setRoomOf] = useState({
     sqrft: SqrFtComponentTiles.sqrft,
-    // width: LWHComponentTiles.width,
-    // height: LWHComponentTiles.height,
-    // doorSize: LWHComponentTiles.doorSize,
   });
 
   const [tileInput, setTileInput] = useState({
@@ -50,7 +47,6 @@ const SquareFeet = () => {
   };
 
   const tileLengthHandler = (tileLenght) => {
-    console.log(tileLenght);
     setTileInput((state) => {
       sessionStorage.setItem(
         "SqrFtComponent",
@@ -96,17 +92,11 @@ const SquareFeet = () => {
 
   const sqrFtSubmitHandler = (event) => {
     event.preventDefault();
-    console.log("sqrFtSubmitHandler");
     setUpdateCard(true);
-    // console.log(tileInput.tileLenght);
 
     event.preventDefault();
-    let lapet = roomOf.sqrft * 2 + roomOf.width * 2 - roomOf.doorSize;
-    // setUpdateCard(true);
     setOutputState((prev) => {
       return {
-    //     lapeta: lapet,
-    //     wallSqrFt: (prev.wallSqrFt = lapet * roomOf.height),
         perTileSqrFt: (prev.perTileSqrFt =
           (tileInput.tileLenght * tileInput.tileWidth) / 144),
         perBoxSqrFt: (prev.perBoxSqrFt =

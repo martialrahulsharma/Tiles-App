@@ -2,20 +2,7 @@ import React from "react";
 import { useState } from "react";
 import classes from "./TilesRelatedInput.module.css";
 
-// let lapetaComponentTiles;
-// lapetaComponentTiles = JSON.parse(sessionStorage.LapetaComponent);
-
 const TilesRelatedInput = (props) => {
-  // lapetaComponentTiles = JSON.parse(sessionStorage.LapetaComponent);
-  // console.log('lpt');
-  // const [lapetaCompo, setLapetaCompo] = useState({
-  //   tileLength: lapetaComponentTiles.tileLength,
-  //   tileWidth: lapetaComponentTiles.tileWidth,
-  //   tileInABox: lapetaComponentTiles.tileInABox,
-  //   tilePricePerBox: lapetaComponentTiles.tilePricePerBox,
-  // });
-
-
   const [lengthValue, setLengthValue] = useState(0);
   const [widthValue, setWidthValue] = useState(0);
   const [tilesInABox, setTilesInABox] = useState(0);
@@ -50,7 +37,6 @@ const TilesRelatedInput = (props) => {
             type="number"
             placeholder="Length"
             value={lengthValue}
-            // value={lapetaCompo.tileLength}
             onChange={lengthValueHandler}
           />
           <input

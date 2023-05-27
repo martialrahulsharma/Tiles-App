@@ -82,18 +82,14 @@ const TilesForm = (props) => {
   const formSubmitHandler = (event) => {
     event.preventDefault();
     let roomLenWidth = roomLength * 2 + roomWidth * 2;
-    console.log(roomLenWidth);
     let lapeta = roomLenWidth - doorSize;
-    // console.log(roomActualSize);
     let wallSqr = lapeta * roomHeight;
 
     let oneTileSizeInSqrFt = (tileWidth * tileLength) / 144;
     let oneBoxInSqrFt = parseFloat(oneTileSizeInSqrFt * tileInBox).toFixed(2);
-    console.log(oneBoxInSqrFt);
 
     let howManytilesBoxes = wallSqr / oneBoxInSqrFt;
     howManytilesBoxes = Math.ceil(howManytilesBoxes);
-    console.log(wallSqr);
 
     let floorOneTileSizeInSqrFt = (floorTileWidth * floorTileLength) / 144;
     let floorOneBoxInSqrFt = parseFloat(
@@ -103,7 +99,6 @@ const TilesForm = (props) => {
       (roomLength * roomWidth) / floorOneBoxInSqrFt
     ).toFixed(2);
     floorHowManytilesBoxes = Math.ceil(floorHowManytilesBoxes);
-    // console.log(Math.round(floorHowManytilesBoxes * 100) / 100);
 
     // Wall floor and total price
     let wallRate = tileRate * howManytilesBoxes;
@@ -127,10 +122,6 @@ const TilesForm = (props) => {
   return (
     <>
     <div>
-          {/* <CostmerSizeSelector sizeProvided="lapeta" />
-          <CostmerSizeSelector sizeProvided="LWH" />
-          <CostmerSizeSelector sizeProvided="SqrFt Floor" />
-          <CostmerSizeSelector sizeProvided="SqrFt Wall" /> */}
         </div>
       <form onSubmit={formSubmitHandler} className={classes.formControl}>
         
@@ -229,9 +220,5 @@ const TilesForm = (props) => {
     </>
   );
 };
-
-/* 4X5X7
-xcb
-*/
 
 export default TilesForm;

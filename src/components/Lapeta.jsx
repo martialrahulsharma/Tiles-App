@@ -6,7 +6,6 @@ import classes from "./Lapeta.module.css";
 import { useEffect } from "react";
 
 let lapetaComponentTiles;
-// lapetaComponentTiles = JSON.parse(sessionStorage.LapetaComponent);
 
 const Lapeta = () => {
   lapetaComponentTiles = JSON.parse(sessionStorage.LapetaComponent);
@@ -46,7 +45,6 @@ const Lapeta = () => {
     });
   };
   const heightHandler = (event) => {
-    // setHeight(event.target.value);
     setRoomOf((prev) => {
       sessionStorage.setItem(
         "LapetaComponent",
@@ -65,7 +63,6 @@ const Lapeta = () => {
     });
   };
   const tileLengthHandler = (tileLenght) => {
-    console.log(tileLenght);
     setTileInput((state) => {
       sessionStorage.setItem(
         "LapetaComponent",
@@ -108,7 +105,6 @@ const Lapeta = () => {
 
   const submitHandle = (event) => {
     event.preventDefault();
-    console.log(outputState.lapeta);
     let lapet = roomOf.lapeta - roomOf.doorSize;
     setUpdateCard(true);
     setOutputState((prev) => {

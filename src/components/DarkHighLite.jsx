@@ -8,8 +8,6 @@ import LightTile from "./DHL/LightTile";
 import classes from "./DarkHighLite.module.css";
 
 let LWHComponentTiles;
-let roomWallSqft = 0;
-// let remainRoomWallSqft = 0;
 
 const DarkHighLite = () => {
   LWHComponentTiles = JSON.parse(sessionStorage.LWHComponent);
@@ -35,7 +33,6 @@ const DarkHighLite = () => {
     checkbox: false,
     height: "",
     width: "",
-    tileAxis: "Horizontal",
     numberOfWall: 1,
     setNumberOfWall: 4,
   });
@@ -44,7 +41,6 @@ const DarkHighLite = () => {
     checkbox: false,
     height: "",
     width: "",
-    tileAxis: "Horizontal",
     numberOfWall: 1,
     setNumberOfWall: 4,
   });
@@ -54,7 +50,6 @@ const DarkHighLite = () => {
     checkbox: false,
     height: "",
     width: "",
-    tileAxis: "Horizontal",
     numberOfWall: 1,
     setNumberOfWall: 4,
   });
@@ -79,13 +74,6 @@ const DarkHighLite = () => {
 
   const [updateCard, setUpdateCard] = useState(false);
 
-  // const [length, setLength] = useState("");
-  // const [width, setWidth] = useState("");
-  // const [height, setHeight] = useState("");
-  // const [doorSize, setDoorSize] = useState("");
-
-  let arr = [1, 2, 3, 4];
-
   const lengthHandler = (event) => {
     setRoomOf((prev) => {
       sessionStorage.setItem(
@@ -99,7 +87,6 @@ const DarkHighLite = () => {
     });
   };
   const widthHandler = (event) => {
-    // setWidth(event.target.value);
     setRoomOf((prev) => {
       sessionStorage.setItem(
         "LWHComponent",
@@ -112,7 +99,6 @@ const DarkHighLite = () => {
     });
   };
   const heightHandler = (event) => {
-    // setHeight(event.target.value);
     setRoomOf((prev) => {
       sessionStorage.setItem(
         "LWHComponent",
@@ -125,7 +111,6 @@ const DarkHighLite = () => {
     });
   };
   const lwhDoorSizeHandler = (event) => {
-    // setDoorSize(event.target.value);
     setRoomOf((prev) => {
       sessionStorage.setItem(
         "LWHComponent",
@@ -200,11 +185,7 @@ const DarkHighLite = () => {
       return { ...prev, width: (prev.width = darkWidth) };
     });
   };
-  const darkAxisHandler = (darkAxis) => {
-    setDarkTile((prev) => {
-      return { ...prev, tileAxis: (prev.tileAxis = darkAxis) };
-    });
-  };
+ 
   const darkNumberOfWallHandler = (darkNumberOfWall) => {
     setDarkTile((prev) => {
       return { ...prev, numberOfWall: (prev.numberOfWall = darkNumberOfWall) };
@@ -229,11 +210,7 @@ const DarkHighLite = () => {
       return { ...prev, width: (prev.width = highLightWidth) };
     });
   };
-  const highLightAxisHandler = (highLightAxis) => {
-    setHighLightTile((prev) => {
-      return { ...prev, tileAxis: (prev.tileAxis = highLightAxis) };
-    });
-  };
+
   const highLightNumberOfWallHandler = (highLightNumberOfWall) => {
     setHighLightTile((prev) => {
       return {
@@ -260,11 +237,7 @@ const DarkHighLite = () => {
       return { ...prev, width: (prev.width = lightWidth) };
     });
   };
-  const lightAxisHandler = (lightAxis) => {
-    setlightTile((prev) => {
-      return { ...prev, tileAxis: (prev.tileAxis = lightAxis) };
-    });
-  };
+
   const lightNumberOfWallHandler = (lightNumberOfWall) => {
     setlightTile((prev) => {
       return { ...prev, numberOfWall: (prev.numberOfWall = lightNumberOfWall) };
@@ -277,7 +250,6 @@ const DarkHighLite = () => {
     setUpdateCard(true);
     let lapet = roomOf.lengths * 2 + roomOf.width * 2 - roomOf.doorSize;
     remainRoomWallSqft.wall = roomOf.height * lapet;
-    console.log(remainRoomWallSqft.wall);
     // reset DHL data first
     outputState.darkSqft = 0;
     outputState.darkBoxes = 0;
@@ -288,7 +260,6 @@ const DarkHighLite = () => {
     //--------------Dark condition start--------
     if (darkTile.checkbox == true && remainRoomWallSqft.wall != 0) {
       if ((darkTile.height && darkTile.width) != "") {
-        console.log("if");
         if (darkTile.height > roomOf.height) {
           alert("check dark height");
           return;
@@ -326,16 +297,11 @@ const DarkHighLite = () => {
             remainRoomWallSqft.wall - outputState.darkSqft;
         }
       }
-      console.log("in");
-    } else {
-      console.log("in else");
     }
     //--------------Dark condition end--------
     //--------------HighLight condition start--------
     if (highLightTile.checkbox == true && remainRoomWallSqft.wall != 0) {
-      console.log("highlight");
       if ((highLightTile.height && highLightTile.width) != "") {
-        console.log("highlight if");
         if (highLightTile.height > roomOf.height) {
           alert("check dark height");
           return;
@@ -381,7 +347,6 @@ const DarkHighLite = () => {
     //--------------Light condition start--------
     if (lightTile.checkbox == true && remainRoomWallSqft.wall != 0) {
       if ((lightTile.height && lightTile.width) != "") {
-        console.log("if");
         if (lightTile.height > roomOf.height) {
           alert("check dark height");
           return;
@@ -458,9 +423,7 @@ const DarkHighLite = () => {
         perBoxSqrFt: (prev.perBoxSqrFt = (
           prev.perTileSqrFt * tileInput.tileInABox
         ).toFixed(2)),
-        totalTilesBoxes: (prev.totalTilesBoxes = Math.ceil(
-          prev.wallSqrFt / prev.perBoxSqrFt
-        )),
+        totalTilesBoxes: (prev.totalTilesBoxes = (outputState.darkBoxes+outputState.highLightBoxes+outputState.lightBoxes)),
         perTileSqrFtPrice: Math.ceil(
           tileInput.tilePricePerBox / prev.perBoxSqrFt
         ).toFixed(2),
@@ -533,7 +496,6 @@ const DarkHighLite = () => {
               onCheckbox={darkCheckboxHandler}
               onDarkHeightHandler={darkHeightHandler}
               onDarkWidthHandler={darkWidthHandler}
-              onDarkAxisHandler={darkAxisHandler}
               onDarkNumberOfWallHandler={darkNumberOfWallHandler}
             />
           </div>
@@ -544,7 +506,6 @@ const DarkHighLite = () => {
               onCheckbox={highLightCheckboxHandler}
               onHighLightHeightHandler={highLightHeightHandler}
               onHighLightWidthHandler={highLightWidthHandler}
-              onHighLightAxisHandler={highLightAxisHandler}
               onHighLightNumberOfWallHandler={highLightNumberOfWallHandler}
             />
           </div>
@@ -554,7 +515,6 @@ const DarkHighLite = () => {
             onCheckbox={lightCheckboxHandler}
             onLightHeightHandler={lightHeightHandler}
             onLightWidthHandler={lightWidthHandler}
-            onLightAxisHandler={lightAxisHandler}
             onLightNumberOfWallHandler={lightNumberOfWallHandler}
           />
           <br />

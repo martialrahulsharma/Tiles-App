@@ -2,16 +2,9 @@ import React, { useState } from "react";
 import classes from "./DarkTile.module.css";
 
 const LightTile = (props) => {
-  //   const [dark, setDark] = useState({
-  //     height: "",
-  //     width: "",
-  //     tileAxis: "Horizontal",
-  //     numberOfWall: 1,
-  //   });
 
   const [lightHeight, setLightHight] = useState("");
   const [lightWidth, setLightWidth] = useState("");
-  const [lightAxis, setLightAxis] = useState("Horizontal");
   const [lightNumberOfWall, setLightNumberOfWall] = useState(1);
   const [lightCheckbox, setlightCheckbox] = useState(false);
 
@@ -29,10 +22,7 @@ const LightTile = (props) => {
     setLightWidth(event.target.value);
     props.onLightWidthHandler(event.target.value);
   };
-  const lightTileAxishHandler = (event) => {
-    setLightAxis(event.target.value);
-    props.onLightAxisHandler(event.target.value);
-  };
+
   const lightNumberOfWallHandler = (event) => {
     setLightNumberOfWall(event.target.value);
     props.onLightNumberOfWallHandler(event.target.value)
@@ -40,7 +30,6 @@ const LightTile = (props) => {
 
   return (
     <>
-      {/* <div className={classes.dark}> */}
       <input type='checkbox' checked={lightCheckbox} onChange={lightCheckboxHandler} />
         <label>Light</label>
         <input
@@ -55,14 +44,6 @@ const LightTile = (props) => {
           onChange={lightInputWidthHandler}
           placeholder="width"
         />
-        <select
-          name="hrVr"
-          value={lightAxis}
-          onChange={lightTileAxishHandler}
-        >
-          <option value="Horizontal">Horizontal</option>
-          <option value="Vertical">Vertical</option>
-        </select>
 
         <input
           type="number"
@@ -70,7 +51,6 @@ const LightTile = (props) => {
           placeholder="number of wall"
           onChange={lightNumberOfWallHandler}
         />
-      {/* </div> */}
     </>
   );
 };

@@ -29,16 +29,6 @@ LWComponentTiles = JSON.parse(sessionStorage.LWComponent);
     totalTilesBoxes: 0,
     totalPrice: 0,
   });
-  // const [length, setLength] = useState("");
-  // const [width, setWidth] = useState("");
-
-  // const lengthHandler = (event) => {
-  //   setLength(event.target.value);
-  // };
-  // const widthHandler = (event) => {
-  //   setWidth(event.target.value);
-  // };
-
   const [updateCard, setUpdateCard] = useState(false);
 
   const lengthHandler = (event) => {
@@ -54,7 +44,6 @@ LWComponentTiles = JSON.parse(sessionStorage.LWComponent);
     });
   };
   const widthHandler = (event) => {
-    // setWidth(event.target.value);
     setRoomOf((prev) => {
       sessionStorage.setItem(
         "LWComponent",
@@ -113,9 +102,7 @@ LWComponentTiles = JSON.parse(sessionStorage.LWComponent);
 
   const LWSubmitHandler = (event) => {
     event.preventDefault();
-    console.log("LWSubmitHandler");
     setUpdateCard(true);
-    console.log(tileInput.tileLenght);
 
     event.preventDefault();
     let lapeta = (roomOf.lengths*2) + (roomOf.width*2);

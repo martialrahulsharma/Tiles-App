@@ -5,7 +5,6 @@ const HighLightTile = (props) => {
 
   const [highLightHeight, setHighLightHight] = useState("");
   const [highLightWidth, setHighLightWidth] = useState("");
-  const [highLightAxis, setHighLightAxis] = useState("Horizontal");
   const [highLightNumberOfWall, setHighLightNumberOfWall] = useState(1);
   const [highlightCheckbox, setHighlightCheckbox] = useState(false);
 
@@ -23,10 +22,7 @@ const HighLightTile = (props) => {
     setHighLightWidth(event.target.value);
     props.onHighLightWidthHandler(event.target.value);
   };
-  const highLightTileAxishHandler = (event) => {
-    setHighLightAxis(event.target.value);
-    props.onHighLightAxisHandler(event.target.value);
-  };
+
   const highLightNumberOfWallHandler = (event) => {
     setHighLightNumberOfWall(event.target.value);
     props.onHighLightNumberOfWallHandler(event.target.value)
@@ -34,7 +30,6 @@ const HighLightTile = (props) => {
 
   return (
     <>
-      {/* <div className={classes.dark}> */}
       <input type='checkbox' checked={highlightCheckbox} onChange={highlightCheckboxHandler} />
         <label>High Light</label>
         <input
@@ -49,14 +44,6 @@ const HighLightTile = (props) => {
           onChange={highLightInputWidthHandler}
           placeholder="width"
         />
-        <select
-          name="hrVr"
-          value={highLightAxis}
-          onChange={highLightTileAxishHandler}
-        >
-          <option value="Horizontal">Horizontal</option>
-          <option value="Vertical">Vertical</option>
-        </select>
 
         <input
           type="number"
@@ -64,7 +51,6 @@ const HighLightTile = (props) => {
           placeholder="number of wall"
           onChange={highLightNumberOfWallHandler}
         />
-      {/* </div> */}
     </>
   );
 };

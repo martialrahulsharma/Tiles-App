@@ -34,11 +34,6 @@ const LengthWidthHeight = () => {
 
   const [updateCard, setUpdateCard] = useState(false);
 
-  // const [length, setLength] = useState("");
-  // const [width, setWidth] = useState("");
-  // const [height, setHeight] = useState("");
-  // const [doorSize, setDoorSize] = useState("");
-
   const lengthHandler = (event) => {
     setRoomOf((prev) => {
       sessionStorage.setItem(
@@ -52,7 +47,6 @@ const LengthWidthHeight = () => {
     });
   };
   const widthHandler = (event) => {
-    // setWidth(event.target.value);
     setRoomOf((prev) => {
       sessionStorage.setItem(
         "LWHComponent",
@@ -65,7 +59,6 @@ const LengthWidthHeight = () => {
     });
   };
   const heightHandler = (event) => {
-    // setHeight(event.target.value);
     setRoomOf((prev) => {
       sessionStorage.setItem(
         "LWHComponent",
@@ -78,7 +71,6 @@ const LengthWidthHeight = () => {
     });
   };
   const lwhDoorSizeHandler = (event) => {
-    // setDoorSize(event.target.value);
     setRoomOf((prev) => {
       sessionStorage.setItem(
         "LWHComponent",
@@ -137,9 +129,7 @@ const LengthWidthHeight = () => {
 
   const LWHSubmitHandler = (event) => {
     event.preventDefault();
-    console.log("LWHSubmitHandler");
     setUpdateCard(true);
-    console.log(tileInput.tileLenght);
 
     event.preventDefault();
     let lapet = ((roomOf.lengths*2) + (roomOf.width*2)) - roomOf.doorSize;
