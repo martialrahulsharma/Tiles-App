@@ -6,6 +6,7 @@ import DarkTile from "./DHL/DarkTile";
 import HighlightTile from "./DHL/HighLightTile";
 import LightTile from "./DHL/LightTile";
 import classes from "./DarkHighLite.module.css";
+import Button from "./Button";
 
 let LWHComponentTiles;
 
@@ -517,8 +518,7 @@ const DarkHighLite = () => {
             onLightWidthHandler={lightWidthHandler}
             onLightNumberOfWallHandler={lightNumberOfWallHandler}
           />
-          <br />
-          <button type="submit">Submit</button>
+          <Button type='submit' />
         </form>
       </div>
       {updateCard && (

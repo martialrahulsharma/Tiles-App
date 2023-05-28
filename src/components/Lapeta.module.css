@@ -11,13 +11,26 @@
     font-weight: bold;
     /* margin-left: 50px; */
 }
+.lapeta div{
+    margin-bottom: 10px;
+}
+.lapeta first-input{
+    margin-left: 60px;
+}
 
 .lapeta label:nth-child(2){
-    margin-left: 20px;
+    margin-left: 100px;
 }
 
 .lapeta input[type='number']{
     width: 100px;
+    height: 25px;
     padding: 0px 5px 0px 5px;
     margin-left: 10px;
+    border-radius: 5px;
+    border: 0ch;
+}
+
+.lapeta td{
+    padding: 5px;
 }

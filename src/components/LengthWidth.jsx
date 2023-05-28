@@ -3,6 +3,7 @@ import TilesRelatedInput from "./TilesRelatedInput";
 import Card from "./Card";
 import classes from "./LengthWidth.module.css";
 import { useState } from "react";
+import Button from "./Button";
 
 let LWComponentTiles;
 const LengthWidth = () => {
@@ -154,7 +155,7 @@ LWComponentTiles = JSON.parse(sessionStorage.LWComponent);
             onTileInABox={tileInABoxHandler}
             onTilePricePerBox={tilePricePerBoxHandler}
           />
-          <button type="submit">Submit</button>
+          <Button type='submit' />
         </form>
       </div>
       {updateCard && (

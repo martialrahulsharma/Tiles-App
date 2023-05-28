@@ -3,6 +3,7 @@ import TilesRelatedInput from "./TilesRelatedInput";
 import Card from "./Card";
 import classes from "./LengthWidthHeight.module.css";
 import { useState } from "react";
+import Button from "./Button";
 
 let LWHComponentTiles;
 
@@ -197,7 +198,7 @@ const LengthWidthHeight = () => {
             onTileInABox={tileInABoxHandler}
             onTilePricePerBox={tilePricePerBoxHandler}
           />
-          <button type="submit">Submit</button>
+          <Button type='submit' />
         </form>
       </div>
       {updateCard && (

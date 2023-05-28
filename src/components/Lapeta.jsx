@@ -3,7 +3,7 @@ import { useState } from "react";
 import TilesRelatedInput from "./TilesRelatedInput";
 import Card from "./Card";
 import classes from "./Lapeta.module.css";
-import { useEffect } from "react";
+import Button from "./Button";
 
 let lapetaComponentTiles;
 
@@ -24,7 +24,7 @@ const Lapeta = () => {
   });
 
   const [outputState, setOutputState] = useState({
-    lapeta:0,
+    lapeta: 0,
     wallSqrFt: 0,
     perBoxSqrFt: 0,
     perTileSqrFt: 0,
@@ -39,7 +39,10 @@ const Lapeta = () => {
     setRoomOf((prev) => {
       sessionStorage.setItem(
         "LapetaComponent",
-        JSON.stringify({ ...lapetaComponentTiles, lapeta: Number(event.target.value) })
+        JSON.stringify({
+          ...lapetaComponentTiles,
+          lapeta: Number(event.target.value),
+        })
       );
       return { ...prev, lapeta: (roomOf.lapeta = event.target.value) };
     });
@@ -48,25 +51,34 @@ const Lapeta = () => {
     setRoomOf((prev) => {
       sessionStorage.setItem(
         "LapetaComponent",
-        JSON.stringify({ ...lapetaComponentTiles, height: Number(event.target.value) })
+        JSON.stringify({
+          ...lapetaComponentTiles,
+          height: Number(event.target.value),
+        })
       );
-      return {...prev, height: (roomOf.height = event.target.value) };
+      return { ...prev, height: (roomOf.height = event.target.value) };
     });
   };
   const doorSizeHandler = (event) => {
     setRoomOf((prev) => {
       sessionStorage.setItem(
         "LapetaComponent",
-        JSON.stringify({ ...lapetaComponentTiles, doorSize: Number(event.target.value) })
+        JSON.stringify({
+          ...lapetaComponentTiles,
+          doorSize: Number(event.target.value),
+        })
       );
-      return {...prev,  doorSize: (roomOf.doorSize = event.target.value) };
+      return { ...prev, doorSize: (roomOf.doorSize = event.target.value) };
     });
   };
   const tileLengthHandler = (tileLenght) => {
     setTileInput((state) => {
       sessionStorage.setItem(
         "LapetaComponent",
-        JSON.stringify({ ...lapetaComponentTiles, tileLength: Number(tileLenght) })
+        JSON.stringify({
+          ...lapetaComponentTiles,
+          tileLength: Number(tileLenght),
+        })
       );
       return { ...state, tileLenght: (state.tileLenght = tileLenght) };
     });
@@ -76,7 +88,10 @@ const Lapeta = () => {
     setTileInput((state) => {
       sessionStorage.setItem(
         "LapetaComponent",
-        JSON.stringify({ ...lapetaComponentTiles, tileWidth: Number(tileWidth) })
+        JSON.stringify({
+          ...lapetaComponentTiles,
+          tileWidth: Number(tileWidth),
+        })
       );
       return { ...state, tileWidth: (state.tileWidth = tileWidth) };
     });
@@ -85,7 +100,10 @@ const Lapeta = () => {
     setTileInput((state) => {
       sessionStorage.setItem(
         "LapetaComponent",
-        JSON.stringify({ ...lapetaComponentTiles, tileInABox: Number(tileInABox) })
+        JSON.stringify({
+          ...lapetaComponentTiles,
+          tileInABox: Number(tileInABox),
+        })
       );
       return { ...state, tileInABox: (state.tileInABox = tileInABox) };
     });
@@ -94,7 +112,10 @@ const Lapeta = () => {
     setTileInput((state) => {
       sessionStorage.setItem(
         "LapetaComponent",
-        JSON.stringify({ ...lapetaComponentTiles, tilePricePerBox: Number(tilePricePerBox) })
+        JSON.stringify({
+          ...lapetaComponentTiles,
+          tilePricePerBox: Number(tilePricePerBox),
+        })
       );
       return {
         ...state,
@@ -109,7 +130,7 @@ const Lapeta = () => {
     setUpdateCard(true);
     setOutputState((prev) => {
       return {
-        lapeta: (prev.lapeta),
+        lapeta: prev.lapeta,
         wallSqrFt: (prev.wallSqrFt = lapet * roomOf.height),
         perTileSqrFt: (prev.perTileSqrFt =
           (tileInput.tileLenght * tileInput.tileWidth) / 144),
@@ -130,28 +151,50 @@ const Lapeta = () => {
     <>
       <div className={classes.lapeta}>
         <form onSubmit={submitHandle}>
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  <label htmlFor="lapeta">Enter Lapeta</label>
+                </td>
+                <td>
+                  <input
+                    id="lapeta"
+                    type="number"
+                    value={roomOf.lapeta}
+                    onChange={lapetaHandler}
+                  />
+                </td>
+                <td>
+                  <label htmlFor="wallheight">Enter Height</label>
+                </td>
+                <td>
+                  <input
+                  id='wallheight'
+                    type="number"
+                    value={roomOf.height}
+                    onChange={heightHandler}
+                  />
+                </td>
+              </tr>
+              <tr><td><label htmlFor="doorsize">
+              Enter Door Size
+              
+            </label></td>
+                <td><input
+                id='doorsize'
+                type="number"
+                value={roomOf.doorSize}
+                onChange={doorSizeHandler}
+              /></td></tr>
+            </tbody>
+          </table>
+          <div></div>
           <div>
-          <label>
-            Enter Lapeta
-            <input
-              type="number"
-              value={roomOf.lapeta}
-              onChange={lapetaHandler}
-            />
-          </label>
-          <label>
-            Enter Height
-            <input type="number" value={roomOf.height} onChange={heightHandler} />
-          </label>
-          </div>
-          <div>
-          <label>
-            Enter Door Size
-            <input type="number" value={roomOf.doorSize} onChange={doorSizeHandler} />
-          </label>
+            
           </div>
           <TilesRelatedInput
-            lapetaComponent='LapetaComponent'
+            lapetaComponent="LapetaComponent"
             lapeta={roomOf.lapeta}
             height={roomOf.height}
             doorSize={roomOf.doorSize}
@@ -160,7 +203,7 @@ const Lapeta = () => {
             onTileInABox={tileInABoxHandler}
             onTilePricePerBox={tilePricePerBoxHandler}
           />
-          <input type="submit" value="Submit" />
+          <Button type='submit' />
         </form>
       </div>
       {updateCard && (

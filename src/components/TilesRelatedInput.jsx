@@ -29,42 +29,56 @@ const TilesRelatedInput = (props) => {
   };
 
   return (
-    <div className={classes.tilesRelated}>
-      <div>
-        <label>
-          Enter Tile size (in inch)
-          <input
-            type="number"
-            placeholder="Length"
-            value={lengthValue}
-            onChange={lengthValueHandler}
-          />
-          <input
-            type="number"
-            placeholder="Width"
-            value={widthValue}
-            onChange={widthValueHandler}
-          />
-        </label>
-      </div>
-      <div>
-        <label>
-          Tiles in a box
-          <input
-            type="number"
-            value={tilesInABox}
-            onChange={tileInBoxhHandler}
-          />
-        </label>
-        <label>
-          Tiles price/box
-          <input
-            type="number"
-            value={tilesPricePerBox}
-            onChange={tilePriceHandler}  
-          />
-        </label>
-      </div>
+    <div>
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <label>Enter Tile size (in inch)</label>
+            </td>
+            <td>
+              <input
+                type="number"
+                placeholder="Length"
+                value={lengthValue}
+                onChange={lengthValueHandler}
+              />
+            </td>
+            <td>
+              <input
+                type="number"
+                placeholder="Width"
+                value={widthValue}
+                onChange={widthValueHandler}
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>Tiles in a box</label>
+            </td>
+            <td>
+              <input
+                type="number"
+                value={tilesInABox}
+                onChange={tileInBoxhHandler}
+              />
+            </td>
+            <td>
+              <label>Tiles price/box</label>
+            </td>
+            <td>
+              <input
+                type="number"
+                value={tilesPricePerBox}
+                onChange={tilePriceHandler}
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div></div>
+      <div></div>
     </div>
   );
 };

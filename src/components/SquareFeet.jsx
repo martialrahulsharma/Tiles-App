@@ -1,8 +1,7 @@
-import React from "react";
+import React, {useState} from "react";
 import TilesRelatedInput from "./TilesRelatedInput";
-import Card from "./Card";
-import classes from "./SquareFeet.module.css";
-import { useState } from "react";
+import Card from "./Card";import classes from "./SquareFeet.module.css"
+import Button from "./Button";
 
 let SqrFtComponentTiles;
 const SquareFeet = () => {
@@ -130,8 +129,8 @@ const SquareFeet = () => {
           onWidthTile={tileWidthHandler}
           onTileInABox={tileInABoxHandler}
           onTilePricePerBox={tilePricePerBoxHandler}
-        />
-        <button type="submit">Submit</button>
+        />    
+        <Button type='submit' />
       </form>
     </div>
     {updateCard && (
