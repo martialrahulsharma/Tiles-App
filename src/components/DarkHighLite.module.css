@@ -14,5 +14,13 @@
 
 .lwh input[type='number']{
     width: 100px;
+    height: 25px;
     padding: 0px 5px 0px 5px;
+    margin-left: 10px;
+    border-radius: 5px;
+    border: 0ch;
+}
+
+.lwh td{
+    padding: 5px;
 }

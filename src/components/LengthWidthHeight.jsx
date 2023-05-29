@@ -133,7 +133,7 @@ const LengthWidthHeight = () => {
     setUpdateCard(true);
 
     event.preventDefault();
-    let lapet = ((roomOf.lengths*2) + (roomOf.width*2)) - roomOf.doorSize;
+    let lapet = roomOf.lengths * 2 + roomOf.width * 2 - roomOf.doorSize;
     setUpdateCard(true);
     setOutputState((prev) => {
       return {
@@ -158,35 +158,56 @@ const LengthWidthHeight = () => {
     <>
       <div className={classes.lwh}>
         <form onSubmit={LWHSubmitHandler}>
-          <label>
-            Enter Length, Width, Height
-            <input
-              type="number"
-              value={roomOf.lengths}
-              onChange={lengthHandler}
-              placeholder="length"
-            />
-            <input
-              type="number"
-              value={roomOf.width}
-              onChange={widthHandler}
-              placeholder="width"
-            />
-            <input
-              type="number"
-              value={roomOf.height}
-              onChange={heightHandler}
-              placeholder="height"
-            />
-          </label>
-          <label>
-            Enter Door Size
-            <input
-              type="number"
-              value={roomOf.doorSize}
-              onChange={lwhDoorSizeHandler}
-            />
-          </label>
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  <label>Enter Length, Width, Height</label>
+                </td>
+                <td>
+                  <input
+                  id="roomlenght"
+                    type="number"
+                    value={roomOf.lengths}
+                    onChange={lengthHandler}
+                    placeholder="length"
+                  />
+                </td>
+                <td>
+                  <input
+                  id="roomwidth"
+                    type="number"
+                    value={roomOf.width}
+                    onChange={widthHandler}
+                    placeholder="width"
+                  />
+                </td>
+                <td>
+                  <input
+                  id="roomheight"
+                    type="number"
+                    value={roomOf.height}
+                    onChange={heightHandler}
+                    placeholder="height"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label>Enter Door Size</label>
+                </td>
+                <td>
+                  <input
+                  id="roomdoorsize"
+                    type="number"
+                    value={roomOf.doorSize}
+                    onChange={lwhDoorSizeHandler}
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
           <TilesRelatedInput
             LWHComponent="LWHComponent"
             length={roomOf.lengths}
@@ -198,7 +219,7 @@ const LengthWidthHeight = () => {
             onTileInABox={tileInABoxHandler}
             onTilePricePerBox={tilePricePerBoxHandler}
           />
-          <Button type='submit' />
+          <Button type="submit" />
         </form>
       </div>
       {updateCard && (

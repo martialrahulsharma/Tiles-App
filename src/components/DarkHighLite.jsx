@@ -186,7 +186,7 @@ const DarkHighLite = () => {
       return { ...prev, width: (prev.width = darkWidth) };
     });
   };
- 
+
   const darkNumberOfWallHandler = (darkNumberOfWall) => {
     setDarkTile((prev) => {
       return { ...prev, numberOfWall: (prev.numberOfWall = darkNumberOfWall) };
@@ -387,7 +387,7 @@ const DarkHighLite = () => {
       }
     }
     //--------------Light condition end--------
-//-----DHL start when only DHL checked and value is empty-----
+    //-----DHL start when only DHL checked and value is empty-----
     if (
       darkTile.checkbox == true &&
       (darkTile.height && darkTile.width) == ""
@@ -424,7 +424,10 @@ const DarkHighLite = () => {
         perBoxSqrFt: (prev.perBoxSqrFt = (
           prev.perTileSqrFt * tileInput.tileInABox
         ).toFixed(2)),
-        totalTilesBoxes: (prev.totalTilesBoxes = (outputState.darkBoxes+outputState.highLightBoxes+outputState.lightBoxes)),
+        totalTilesBoxes: (prev.totalTilesBoxes =
+          outputState.darkBoxes +
+          outputState.highLightBoxes +
+          outputState.lightBoxes),
         perTileSqrFtPrice: Math.ceil(
           tileInput.tilePricePerBox / prev.perBoxSqrFt
         ).toFixed(2),
@@ -450,46 +453,53 @@ const DarkHighLite = () => {
     <>
       <div className={classes.lwh}>
         <form onSubmit={DHLSubmitHandler}>
-          <label>
-            Enter Length, Width, Height
-            <input
-              type="number"
-              value={roomOf.lengths}
-              onChange={lengthHandler}
-              placeholder="length"
-            />
-            <input
-              type="number"
-              value={roomOf.width}
-              onChange={widthHandler}
-              placeholder="width"
-            />
-            <input
-              type="number"
-              value={roomOf.height}
-              onChange={heightHandler}
-              placeholder="height"
-            />
-          </label>
-          <label>
-            Enter Door Size
-            <input
-              type="number"
-              value={roomOf.doorSize}
-              onChange={lwhDoorSizeHandler}
-            />
-          </label>
-          <TilesRelatedInput
-            LWHComponent="LWHComponent"
-            length={roomOf.lengths}
-            width={roomOf.width}
-            height={roomOf.height}
-            doorSize={roomOf.doorSize}
-            onLengthTile={tileLengthHandler}
-            onWidthTile={tileWidthHandler}
-            onTileInABox={tileInABoxHandler}
-            onTilePricePerBox={tilePricePerBoxHandler}
-          />
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  <label>Enter LWH</label>
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    value={roomOf.lengths}
+                    onChange={lengthHandler}
+                    placeholder="length"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    value={roomOf.width}
+                    onChange={widthHandler}
+                    placeholder="width"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    value={roomOf.height}
+                    onChange={heightHandler}
+                    placeholder="height"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label>Enter Door Size</label>
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    value={roomOf.doorSize}
+                    onChange={lwhDoorSizeHandler}
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          
           <div>
             <DarkTile
               darkTotalBox={outputState.darkBoxes}
@@ -518,7 +528,7 @@ const DarkHighLite = () => {
             onLightWidthHandler={lightWidthHandler}
             onLightNumberOfWallHandler={lightNumberOfWallHandler}
           />
-          <Button type='submit' />
+          <Button type="submit" />
         </form>
       </div>
       {updateCard && (

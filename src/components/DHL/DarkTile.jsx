@@ -2,16 +2,15 @@ import React, { useState } from "react";
 import classes from "./DarkTile.module.css";
 
 const DarkTile = (props) => {
-
   const [darkHeight, setDarkHight] = useState("");
   const [darkWidth, setDarkWidth] = useState("");
   const [darkNumberOfWall, setDarkNumberOfWall] = useState(1);
   const [darkCheckbox, setDarkCheckbox] = useState(false);
 
-  const darkCheckboxHandler = (event) =>{
+  const darkCheckboxHandler = (event) => {
     setDarkCheckbox(event.target.checked);
     props.onCheckbox(event.target.checked);
-  }
+  };
 
   const darkInputHeightHandler = (event) => {
     setDarkHight(event.target.value);
@@ -24,32 +23,53 @@ const DarkTile = (props) => {
   };
   const darkNumberOfWallHandler = (event) => {
     setDarkNumberOfWall(event.target.value);
-    props.onDarkNumberOfWallHandler(event.target.value)
+    props.onDarkNumberOfWallHandler(event.target.value);
   };
 
   return (
     <>
-        <input type='checkbox' checked={darkCheckbox} onChange={darkCheckboxHandler} />
-        <label>Dark</label>
-        <input
-          type="number"
-          value={darkHeight}
-          onChange={darkInputHeightHandler}
-          placeholder="Height"
-        />
-        <input
-          type="number"
-          value={darkWidth}
-          onChange={darkInputWidthHandler}
-          placeholder="width"
-        />
-
-        <input
-          type="number"
-          value={darkNumberOfWall}
-          placeholder="number of wall"
-          onChange={darkNumberOfWallHandler}
-        />
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <input
+                type="checkbox"
+                id="darkCheckbox"
+                checked={darkCheckbox}
+                onChange={darkCheckboxHandler}
+              />
+              <label htmlFor="darkCheckbox">Dark</label>
+            </td>
+            <td>
+              <input
+                id="darkheight"
+                type="number"
+                value={darkHeight}
+                onChange={darkInputHeightHandler}
+                placeholder="Height"
+              />
+            </td>
+            <td>
+              <input
+                id="darkwidth"
+                type="number"
+                value={darkWidth}
+                onChange={darkInputWidthHandler}
+                placeholder="width"
+              />
+            </td>
+            <td>
+              <input
+                id="darknumberofwall"
+                type="number"
+                value={darkNumberOfWall}
+                placeholder="number of wall"
+                onChange={darkNumberOfWallHandler}
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </>
   );
 };

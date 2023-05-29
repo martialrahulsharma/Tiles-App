@@ -7,7 +7,7 @@ import Button from "./Button";
 
 let LWComponentTiles;
 const LengthWidth = () => {
-LWComponentTiles = JSON.parse(sessionStorage.LWComponent);
+  LWComponentTiles = JSON.parse(sessionStorage.LWComponent);
 
   const [roomOf, setRoomOf] = useState({
     lengths: LWComponentTiles.length,
@@ -106,12 +106,12 @@ LWComponentTiles = JSON.parse(sessionStorage.LWComponent);
     setUpdateCard(true);
 
     event.preventDefault();
-    let lapeta = (roomOf.lengths*2) + (roomOf.width*2);
+    let lapeta = roomOf.lengths * 2 + roomOf.width * 2;
     setUpdateCard(true);
     setOutputState((prev) => {
       return {
         lapeta: (prev.lapeta = lapeta),
-        wallSqrFt: (prev.wallSqrFt = roomOf.lengths*roomOf.width),
+        wallSqrFt: (prev.wallSqrFt = roomOf.lengths * roomOf.width),
         perTileSqrFt: (prev.perTileSqrFt =
           (tileInput.tileLenght * tileInput.tileWidth) / 144),
         perBoxSqrFt: (prev.perBoxSqrFt =
@@ -131,21 +131,34 @@ LWComponentTiles = JSON.parse(sessionStorage.LWComponent);
     <>
       <div className={classes.lw}>
         <form onSubmit={LWSubmitHandler}>
-          <label>
-            Enter Length, Width
-            <input
-              type="number"
-              value={roomOf.lengths}
-              onChange={lengthHandler}
-              placeholder="Length"
-            />
-            <input
-              type="number"
-              value={roomOf.width}
-              onChange={widthHandler}
-              placeholder="Width"
-            />
-          </label>
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  <label>Enter Length, Width</label>
+                </td>
+                <td>
+                  <input
+                  id='roomLength'
+                    type="number"
+                    value={roomOf.lengths}
+                    onChange={lengthHandler}
+                    placeholder="Length"
+                  />
+                </td>
+                <td>
+                  <input
+                  id='roomwidth'
+                    type="number"
+                    value={roomOf.width}
+                    onChange={widthHandler}
+                    placeholder="Width"
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
           <TilesRelatedInput
             LWHComponent="LWComponent"
             length={roomOf.lengths}
@@ -155,7 +168,7 @@ LWComponentTiles = JSON.parse(sessionStorage.LWComponent);
             onTileInABox={tileInABoxHandler}
             onTilePricePerBox={tilePricePerBoxHandler}
           />
-          <Button type='submit' />
+          <Button type="submit" />
         </form>
       </div>
       {updateCard && (
