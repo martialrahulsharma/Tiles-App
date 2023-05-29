@@ -38,7 +38,7 @@ const DarkTile = (props) => {
                 checked={darkCheckbox}
                 onChange={darkCheckboxHandler}
               />
-              <label htmlFor="darkCheckbox">Dark</label>
+              <label htmlFor="darkCheckbox" className={classes.bg}>Dark</label>
             </td>
             <td>
               <input

@@ -499,7 +499,18 @@ const DarkHighLite = () => {
             </tbody>
           </table>
 
-          
+          <TilesRelatedInput
+            LWHComponent="LWHComponent"
+            length={roomOf.lengths}
+            width={roomOf.width}
+            height={roomOf.height}
+            doorSize={roomOf.doorSize}
+            onLengthTile={tileLengthHandler}
+            onWidthTile={tileWidthHandler}
+            onTileInABox={tileInABoxHandler}
+            onTilePricePerBox={tilePricePerBoxHandler}
+          />
+
           <div>
             <DarkTile
               darkTotalBox={outputState.darkBoxes}
