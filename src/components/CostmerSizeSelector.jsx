@@ -58,7 +58,7 @@ const CostmerSizeSelector = (props) => {
   };
   return (
     <>
-    <h1>Tile Measurement Service</h1>
+    <h1>Tile Measurement App</h1>
       <h2 className={classes.costmerSize}>Customer Providing</h2>
       <div className={classes.costmerSize}>
         {props.sizeProvided.map((item, index) => {
