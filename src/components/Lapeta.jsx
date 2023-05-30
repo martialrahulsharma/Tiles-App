@@ -151,48 +151,33 @@ const Lapeta = () => {
     <>
       <div className={classes.lapeta}>
         <form onSubmit={submitHandle}>
-          <table>
-            <tbody>
-              <tr>
-                <td>
-                  <label htmlFor="lapeta">Enter Lapeta</label>
-                </td>
-                <td>
-                  <input
-                    id="lapeta"
-                    type="number"
-                    value={roomOf.lapeta}
-                    onChange={lapetaHandler}
-                  />
-                </td>
-                <td>
-                  <label htmlFor="wallheight">Enter Height</label>
-                </td>
-                <td>
-                  <input
-                  id='wallheight'
-                    type="number"
-                    value={roomOf.height}
-                    onChange={heightHandler}
-                  />
-                </td>
-              </tr>
-              <tr><td><label htmlFor="doorsize">
-              Enter Door Size
-              
-            </label></td>
-                <td><input
-                id='doorsize'
-                type="number"
-                value={roomOf.doorSize}
-                onChange={doorSizeHandler}
-              /></td></tr>
-            </tbody>
-          </table>
-          <div></div>
-          <div>
-            
+          <div className={classes['row-container']}>
+            <label htmlFor="lapeta">Enter Lapeta</label> <br />
+            <input
+              id="lapeta"
+              type="number"
+              value={roomOf.lapeta}
+              onChange={lapetaHandler}
+            />
           </div>
+
+          <label htmlFor="wallheight">Enter Height</label>
+
+          <input
+            id="wallheight"
+            type="number"
+            value={roomOf.height}
+            onChange={heightHandler}
+          />
+          <label htmlFor="doorsize">Enter Door Size</label>
+          <input
+            id="doorsize"
+            type="number"
+            value={roomOf.doorSize}
+            onChange={doorSizeHandler}
+          />
+          <div></div>
+          <div></div>
           <TilesRelatedInput
             lapetaComponent="LapetaComponent"
             lapeta={roomOf.lapeta}
@@ -203,7 +188,7 @@ const Lapeta = () => {
             onTileInABox={tileInABoxHandler}
             onTilePricePerBox={tilePricePerBoxHandler}
           />
-          <Button type='submit' />
+          <Button type="submit" />
         </form>
       </div>
       {updateCard && (
