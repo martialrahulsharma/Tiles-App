@@ -74,6 +74,9 @@ const DarkHighLite = () => {
   });
 
   const [updateCard, setUpdateCard] = useState(false);
+  const [showDark, setShowDark] = useState(false);
+  const [showHighlight, setShowHighlight] = useState(false);
+  const [showLight, setShowLight] = useState(false);
 
   const lengthHandler = (event) => {
     setRoomOf((prev) => {
@@ -413,6 +416,9 @@ const DarkHighLite = () => {
     }
     //-----DHL end when only DHL checked and value is empty-----
     setUpdateCard(true);
+    setShowDark(true);
+    setShowHighlight(true);
+    setShowLight(true);
     setOutputState((prev) => {
       return {
         lapeta: lapet,
@@ -564,21 +570,21 @@ const DarkHighLite = () => {
           }
         />
       )}
-      {
+      {showDark &&
         <DarkHighLiteCard
           heading={"Dark"}
           sqrft={outputState.darkSqft}
           darkBoxes={outputState.darkBoxes}
         />
       }
-      {
+      { showHighlight &&
         <DarkHighLiteCard
           heading={"Highlight"}
           sqrft={outputState.highLightSqft}
           darkBoxes={outputState.highLightBoxes}
         />
       }
-      {
+      { showLight &&
         <DarkHighLiteCard
           heading={"Light"}
           sqrft={outputState.lightSqft}
