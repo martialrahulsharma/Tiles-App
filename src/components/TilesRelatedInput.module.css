@@ -1,4 +1,12 @@
-.tilesRelated{
+.rowContainer{
+    display: flex;
+    flex-direction: row;
+    column-gap: 30px;   
+    margin-bottom: 10px; 
+}
+
+.columnContainer{
     display: flex;
     flex-direction: column;
+    /* row-gap: 20px; */
 }

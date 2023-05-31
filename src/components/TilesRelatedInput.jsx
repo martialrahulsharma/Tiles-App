@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import classes from "./TilesRelatedInput.module.css";
+// import classes from "./Lapeta.module.css";
 
 const TilesRelatedInput = (props) => {
   const [lengthValue, setLengthValue] = useState(0);
@@ -29,57 +30,39 @@ const TilesRelatedInput = (props) => {
   };
 
   return (
-    <div>
-      <table>
-        <tbody>
-          <tr>
-            <td>
-              <label>Enter Tile size (in inch)</label>
-            </td>
-            <td>
-              <input
-                type="number"
-                placeholder="Length"
-                value={lengthValue}
-                onChange={lengthValueHandler}
-              />
-            </td>
-            <td>
-              <input
-                type="number"
-                placeholder="Width"
-                value={widthValue}
-                onChange={widthValueHandler}
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label>Tiles in a box</label>
-            </td>
-            <td>
-              <input
-                type="number"
-                value={tilesInABox}
-                onChange={tileInBoxhHandler}
-              />
-            </td>
-            <td>
-              <label>Tiles price/box</label>
-            </td>
-            <td>
-              <input
-                type="number"
-                value={tilesPricePerBox}
-                onChange={tilePriceHandler}
-              />
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <div></div>
-      <div></div>
+    <>
+    <div className={classes.rowContainer}>
+      <div className={classes.columnContainer}>
+      <label>Enter Tile size (in inch)</label>
+        <div className={classes.rowContainer}>
+        <input
+            type="number"
+            placeholder="Length"
+            value={lengthValue}
+            onChange={lengthValueHandler}
+          />
+          <input
+            type="number"
+            placeholder="Width"
+            value={widthValue}
+            onChange={widthValueHandler}
+          />
+        </div>
+      </div>
+      <div className={classes.columnContainer}>
+        <label>Tiles in a box</label>
+        <input type="number" value={tilesInABox} onChange={tileInBoxhHandler} />
+      </div>
+      <div className={classes.columnContainer}>
+        <label>Tiles price/box</label>
+        <input
+          type="number"
+          value={tilesPricePerBox}
+          onChange={tilePriceHandler}
+        />
+      </div>
     </div>
+    </>
   );
 };
 

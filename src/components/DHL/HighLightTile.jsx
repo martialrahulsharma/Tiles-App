@@ -29,48 +29,40 @@ const HighLightTile = (props) => {
 
   return (
     <>
-      <table>
-        <tbody>
-          <tr>
-            <td>
-              <input
-                type="checkbox"
-                id="heightcheckbox"
-                checked={highlightCheckbox}
-                onChange={highlightCheckboxHandler}
-              />
-              <label htmlFor="heightcheckbox">High Light</label>
-            </td>
-            <td>
-              <input
-                id="highLightHeight"
-                type="number"
-                value={highLightHeight}
-                onChange={highLightInputHeightHandler}
-                placeholder="Height"
-              />
-            </td>
-            <td>
-              <input
-                id="highLightWidth"
-                type="number"
-                value={highLightWidth}
-                onChange={highLightInputWidthHandler}
-                placeholder="width"
-              />
-            </td>
-            <td>
-              <input
-                id="highLightNumberOfWall"
-                type="number"
-                value={highLightNumberOfWall}
-                placeholder="number of wall"
-                onChange={highLightNumberOfWallHandler}
-              />
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div className={classes.columnContainer}>
+        <div className={classes.rowContainer}>
+          <div>
+            <input
+              type="checkbox"
+              id="heightcheckbox"
+              checked={highlightCheckbox}
+              onChange={highlightCheckboxHandler}
+            />
+            <label htmlFor="heightcheckbox">High Light</label>
+          </div>
+          <input
+            id="highLightHeight"
+            type="number"
+            value={highLightHeight}
+            onChange={highLightInputHeightHandler}
+            placeholder="Height"
+          />
+          <input
+            id="highLightWidth"
+            type="number"
+            value={highLightWidth}
+            onChange={highLightInputWidthHandler}
+            placeholder="width"
+          />
+          <input
+            id="highLightNumberOfWall"
+            type="number"
+            value={highLightNumberOfWall}
+            placeholder="number of wall"
+            onChange={highLightNumberOfWallHandler}
+          />
+        </div>
+      </div>
     </>
   );
 };

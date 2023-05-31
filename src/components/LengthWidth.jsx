@@ -131,33 +131,25 @@ const LengthWidth = () => {
     <>
       <div className={classes.lw}>
         <form onSubmit={LWSubmitHandler}>
-          <table>
-            <tbody>
-              <tr>
-                <td>
-                  <label>Enter Length, Width</label>
-                </td>
-                <td>
-                  <input
-                  id='roomLength'
-                    type="number"
-                    value={roomOf.lengths}
-                    onChange={lengthHandler}
-                    placeholder="Length"
-                  />
-                </td>
-                <td>
-                  <input
-                  id='roomwidth'
-                    type="number"
-                    value={roomOf.width}
-                    onChange={widthHandler}
-                    placeholder="Width"
-                  />
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <div className={classes.columnContainer}>
+            <label>Enter Length, Width</label>
+            <div className={classes.rowContainer}>
+              <input
+                id="roomLength"
+                type="number"
+                value={roomOf.lengths}
+                onChange={lengthHandler}
+                placeholder="Length"
+              />
+              <input
+                id="roomwidth"
+                type="number"
+                value={roomOf.width}
+                onChange={widthHandler}
+                placeholder="Width"
+              />
+            </div>
+          </div>
 
           <TilesRelatedInput
             LWHComponent="LWComponent"

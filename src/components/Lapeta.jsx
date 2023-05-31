@@ -151,33 +151,35 @@ const Lapeta = () => {
     <>
       <div className={classes.lapeta}>
         <form onSubmit={submitHandle}>
-          <div className={classes['row-container']}>
-            <label htmlFor="lapeta">Enter Lapeta</label> <br />
-            <input
-              id="lapeta"
-              type="number"
-              value={roomOf.lapeta}
-              onChange={lapetaHandler}
-            />
+          <div className={classes.rowContainer}>
+            <div className={classes.columnContainer}>
+              <label htmlFor="lapeta">Enter Lapeta</label>
+              <input
+                id="lapeta"
+                type="number"
+                value={roomOf.lapeta}
+                onChange={lapetaHandler}
+              />
+            </div>
+            <div className={classes.columnContainer}>
+              <label htmlFor="wallheight">Enter Height</label>
+              <input
+                id="wallheight"
+                type="number"
+                value={roomOf.height}
+                onChange={heightHandler}
+              />
+            </div>
+            <div className={classes.columnContainer}>
+              <label htmlFor="doorsize">Enter Door Size</label>
+              <input
+                id="doorsize"
+                type="number"
+                value={roomOf.doorSize}
+                onChange={doorSizeHandler}
+              />
+            </div>
           </div>
-
-          <label htmlFor="wallheight">Enter Height</label>
-
-          <input
-            id="wallheight"
-            type="number"
-            value={roomOf.height}
-            onChange={heightHandler}
-          />
-          <label htmlFor="doorsize">Enter Door Size</label>
-          <input
-            id="doorsize"
-            type="number"
-            value={roomOf.doorSize}
-            onChange={doorSizeHandler}
-          />
-          <div></div>
-          <div></div>
           <TilesRelatedInput
             lapetaComponent="LapetaComponent"
             lapeta={roomOf.lapeta}

@@ -158,55 +158,41 @@ const LengthWidthHeight = () => {
     <>
       <div className={classes.lwh}>
         <form onSubmit={LWHSubmitHandler}>
-          <table>
-            <tbody>
-              <tr>
-                <td>
-                  <label>Enter Length, Width, Height</label>
-                </td>
-                <td>
-                  <input
-                  id="roomlenght"
-                    type="number"
-                    value={roomOf.lengths}
-                    onChange={lengthHandler}
-                    placeholder="length"
-                  />
-                </td>
-                <td>
-                  <input
-                  id="roomwidth"
-                    type="number"
-                    value={roomOf.width}
-                    onChange={widthHandler}
-                    placeholder="width"
-                  />
-                </td>
-                <td>
-                  <input
-                  id="roomheight"
-                    type="number"
-                    value={roomOf.height}
-                    onChange={heightHandler}
-                    placeholder="height"
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label>Enter Door Size</label>
-                </td>
-                <td>
-                  <input
-                  id="roomdoorsize"
-                    type="number"
-                    value={roomOf.doorSize}
-                    onChange={lwhDoorSizeHandler}
-                  />
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <div className={classes.columnContainer}>
+            <div className={classes.columnContainer}>
+              <label>Enter Length, Width, Height</label>
+            </div>
+            <div className={classes.rowContainer}>
+              <input
+                id="roomlenght"
+                type="number"
+                value={roomOf.lengths}
+                onChange={lengthHandler}
+                placeholder="length"
+              />
+              <input
+                id="roomwidth"
+                type="number"
+                value={roomOf.width}
+                onChange={widthHandler}
+                placeholder="width"
+              />
+              <input
+                id="roomheight"
+                type="number"
+                value={roomOf.height}
+                onChange={heightHandler}
+                placeholder="height"
+              />
+            </div>
+            <label>Enter Door Size</label>
+            <input
+              id="roomdoorsize"
+              type="number"
+              value={roomOf.doorSize}
+              onChange={lwhDoorSizeHandler}
+            />
+          </div>
 
           <TilesRelatedInput
             LWHComponent="LWHComponent"

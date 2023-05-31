@@ -1,6 +1,6 @@
 .lwh{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     background-color: rgb(31, 197, 197);
     padding: 10px;
     margin-top: 10px;
@@ -8,7 +8,7 @@
 
 .lwh label{
     font-size: larger;
-    font-weight: bold;
+    /* font-weight: bold; */
     /* margin-left: 50px; */
 }
 
@@ -16,11 +16,26 @@
     width: 100px;
     height: 25px;
     padding: 0px 5px 0px 5px;
-    margin-left: 10px;
+    /* margin-left: 10px; */
     border-radius: 5px;
     border: 0ch;
+    outline: none;
 }
 
-.lwh  td{
-    padding: 5px;
+.lwh input:focus{
+    background-color: aqua;
+    border: 1px solid black;
+}
+
+.lwh .rowContainer{
+    display: flex;
+    flex-direction: row;
+    column-gap: 30px;
+    margin-bottom: 8px;
+}
+
+.lwh .columnContainer{
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
 }

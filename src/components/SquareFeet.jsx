@@ -1,6 +1,7 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import TilesRelatedInput from "./TilesRelatedInput";
-import Card from "./Card";import classes from "./SquareFeet.module.css"
+import Card from "./Card";
+import classes from "./SquareFeet.module.css";
 import Button from "./Button";
 
 let SqrFtComponentTiles;
@@ -49,7 +50,10 @@ const SquareFeet = () => {
     setTileInput((state) => {
       sessionStorage.setItem(
         "SqrFtComponent",
-        JSON.stringify({ ...SqrFtComponentTiles, tileLength: Number(tileLenght) })
+        JSON.stringify({
+          ...SqrFtComponentTiles,
+          tileLength: Number(tileLenght),
+        })
       );
       return { ...state, tileLenght: (state.tileLenght = tileLenght) };
     });
@@ -68,7 +72,10 @@ const SquareFeet = () => {
     setTileInput((state) => {
       sessionStorage.setItem(
         "SqrFtComponent",
-        JSON.stringify({ ...SqrFtComponentTiles, tileInABox: Number(tileInABox) })
+        JSON.stringify({
+          ...SqrFtComponentTiles,
+          tileInABox: Number(tileInABox),
+        })
       );
       return { ...state, tileInABox: (state.tileInABox = tileInABox) };
     });
@@ -113,31 +120,31 @@ const SquareFeet = () => {
 
   return (
     <>
-    <div className={classes.sqrFt}>
-      <form onSubmit={sqrFtSubmitHandler}>
-        <label>
-          Enter Square Feet
-          <input
-            type="number"
-            value={roomOf.sqrft}
-            onChange={squareFeetHandler}
+      <div className={classes.sqrFt}>
+        <form onSubmit={sqrFtSubmitHandler}>
+          <div className={classes.columnContainer}>
+            <label>Enter Square Feet</label>
+            <input
+              type="number"
+              value={roomOf.sqrft}
+              onChange={squareFeetHandler}
+            />
+          </div>
+          <TilesRelatedInput
+            sqrft={roomOf.sqrft}
+            onLengthTile={tileLengthHandler}
+            onWidthTile={tileWidthHandler}
+            onTileInABox={tileInABoxHandler}
+            onTilePricePerBox={tilePricePerBoxHandler}
           />
-        </label>
-        <TilesRelatedInput
-          sqrft={roomOf.sqrft}
-          onLengthTile={tileLengthHandler}
-          onWidthTile={tileWidthHandler}
-          onTileInABox={tileInABoxHandler}
-          onTilePricePerBox={tilePricePerBoxHandler}
-        />    
-        <Button type='submit' />
-      </form>
-    </div>
-    {updateCard && (
+          <Button type="submit" />
+        </form>
+      </div>
+      {updateCard && (
         <Card
           OutputHeading="SqrFt Output"
-          lapeta= {0}
-          wallSqr= '0'
+          lapeta={0}
+          wallSqr="0"
           perTileSqrFtPrice={
             outputState.perTileSqrFtPrice === "NaN"
               ? 0

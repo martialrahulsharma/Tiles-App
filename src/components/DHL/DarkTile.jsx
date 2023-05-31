@@ -28,48 +28,42 @@ const DarkTile = (props) => {
 
   return (
     <>
-      <table>
-        <tbody>
-          <tr>
-            <td>
-              <input
-                type="checkbox"
-                id="darkCheckbox"
-                checked={darkCheckbox}
-                onChange={darkCheckboxHandler}
-              />
-              <label htmlFor="darkCheckbox" className={classes.bg}>Dark</label>
-            </td>
-            <td>
-              <input
-                id="darkheight"
-                type="number"
-                value={darkHeight}
-                onChange={darkInputHeightHandler}
-                placeholder="Height"
-              />
-            </td>
-            <td>
-              <input
-                id="darkwidth"
-                type="number"
-                value={darkWidth}
-                onChange={darkInputWidthHandler}
-                placeholder="width"
-              />
-            </td>
-            <td>
-              <input
-                id="darknumberofwall"
-                type="number"
-                value={darkNumberOfWall}
-                placeholder="number of wall"
-                onChange={darkNumberOfWallHandler}
-              />
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div className={classes.columnContainer}>
+        <div className={classes.rowContainer}>
+          <div className={classes.flextStart}>
+            <input
+              type="checkbox"
+              id="darkCheckbox"
+              checked={darkCheckbox}
+              onChange={darkCheckboxHandler}
+            />
+            <label htmlFor="darkCheckbox" className={classes.bg}>
+              Dark
+            </label>
+          </div>
+          <input
+            id="darkheight"
+            type="number"
+            value={darkHeight}
+            onChange={darkInputHeightHandler}
+            placeholder="Height"
+          />
+          <input
+            id="darkwidth"
+            type="number"
+            value={darkWidth}
+            onChange={darkInputWidthHandler}
+            placeholder="width"
+          />
+          <input
+            id="darknumberofwall"
+            type="number"
+            value={darkNumberOfWall}
+            placeholder="number of wall"
+            onChange={darkNumberOfWallHandler}
+          />
+        </div>
+      </div>
     </>
   );
 };

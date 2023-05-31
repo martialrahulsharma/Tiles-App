@@ -8,19 +8,37 @@
 
 .lwh label{
     font-size: larger;
-    font-weight: bold;
-    /* margin-left: 50px; */
 }
 
 .lwh input[type='number']{
     width: 100px;
     height: 25px;
     padding: 0px 5px 0px 5px;
-    margin-left: 10px;
     border-radius: 5px;
     border: 0ch;
 }
 
-.lwh td{
-    padding: 5px;
+.lwh .rowContainer{
+    display: flex;
+    flex-direction: row;
+    column-gap: 30px;
+}
+.lwh .columnContainer{
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+    margin-bottom: 10px;
+}
+.lwh .dhlBd{
+    position: relative;
+    border: 1px solid black;
+    padding: 15px 0px 5px 0px;
+    margin-bottom: 10px;
+}
+.dhlBd .dhlLabel{
+    position: absolute;
+    width: auto;
+    top: -12px;
+    left: 20px;
+    background-color: rgb(31, 197, 197);
 }

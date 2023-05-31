@@ -29,48 +29,40 @@ const LightTile = (props) => {
 
   return (
     <>
-      <table>
-        <tbody>
-          <tr>
-            <td>
-              <input
-                id="lightchackbox"
-                type="checkbox"
-                checked={lightCheckbox}
-                onChange={lightCheckboxHandler}
-              />
-              <label htmlFor="lightchackbox">Light</label>
-            </td>
-            <td>
-              <input
-                id="lightHeight"
-                type="number"
-                value={lightHeight}
-                onChange={lightInputHeightHandler}
-                placeholder="Height"
-              />
-            </td>
-            <td>
-              <input
-                id="lightWidth"
-                type="number"
-                value={lightWidth}
-                onChange={lightInputWidthHandler}
-                placeholder="width"
-              />
-            </td>
-            <td>
-              <input
-                id="lightNumberOfWall"
-                type="number"
-                value={lightNumberOfWall}
-                placeholder="number of wall"
-                onChange={lightNumberOfWallHandler}
-              />
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div className={classes.columnContainer}>
+        <div className={classes.rowContainer}>
+          <div>
+            <input
+              id="lightchackbox"
+              type="checkbox"
+              checked={lightCheckbox}
+              onChange={lightCheckboxHandler}
+            />
+            <label htmlFor="lightchackbox">Light</label>
+          </div>
+          <input
+            id="lightHeight"
+            type="number"
+            value={lightHeight}
+            onChange={lightInputHeightHandler}
+            placeholder="Height"
+          />
+          <input
+            id="lightWidth"
+            type="number"
+            value={lightWidth}
+            onChange={lightInputWidthHandler}
+            placeholder="width"
+          />
+          <input
+            id="lightNumberOfWall"
+            type="number"
+            value={lightNumberOfWall}
+            placeholder="number of wall"
+            onChange={lightNumberOfWallHandler}
+          />
+        </div>
+      </div>
     </>
   );
 };

@@ -5,13 +5,13 @@ import "../src/App.css";
 sessionStorage.setItem(
   "LapetaComponent",
   JSON.stringify({
-    lapeta: 0,
-    height: 0,
-    doorSize: 0,
-    tileLength: 0,
-    tileWidth: 0,
-    tileInABox: 0,
-    tilePricePerBox: 0,
+    lapeta: "",
+    height: "",
+    doorSize: "",
+    tileLength: "",
+    tileWidth: "",
+    tileInABox: "",
+    tilePricePerBox: "",
   })
 );
 

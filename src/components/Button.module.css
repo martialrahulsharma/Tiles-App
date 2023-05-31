@@ -6,6 +6,7 @@
     border: 0ch;
     border-radius: 10px;
     font-size: larger;
+    /* margin-top: 10px; */
 }
 
 .button button:hover{

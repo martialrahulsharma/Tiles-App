@@ -14,12 +14,14 @@
 .formControl .columnContainer{
     display: flex;
     flex-direction: column;
-    gap: 10px 0px;
+    row-gap:5px;
+
 }
 
-.rowContainer{
+.formControl .rowContainer{
     display: flex;
     flex-direction: row;
+    column-gap: 20px;
 }
 
 .formControl label{

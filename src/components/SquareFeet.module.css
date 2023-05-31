@@ -8,19 +8,23 @@
 
 .sqrFt label{
     font-size: larger;
-    font-weight: bold;
-    /* margin-left: 50px; */
 }
 
 .sqrFt input[type='number']{
     width: 100px;
     height: 25px;
     padding: 0px 5px 0px 5px;
-    margin-left: 10px;
     border-radius: 5px;
     border: 0ch;
+    outline: none;
+}
+.sqrFt input[type='number']:focus{
+    border: 1px solid black;
 }
 
-.sqrFt td{
-    padding: 5px;
+.sqrFt .columnContainer{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    row-gap: 5px;
 }

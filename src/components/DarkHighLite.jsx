@@ -459,52 +459,39 @@ const DarkHighLite = () => {
     <>
       <div className={classes.lwh}>
         <form onSubmit={DHLSubmitHandler}>
-          <table>
-            <tbody>
-              <tr>
-                <td>
-                  <label>Enter LWH</label>
-                </td>
-                <td>
-                  <input
-                    type="number"
-                    value={roomOf.lengths}
-                    onChange={lengthHandler}
-                    placeholder="length"
-                  />
-                </td>
-                <td>
-                  <input
-                    type="number"
-                    value={roomOf.width}
-                    onChange={widthHandler}
-                    placeholder="width"
-                  />
-                </td>
-                <td>
-                  <input
-                    type="number"
-                    value={roomOf.height}
-                    onChange={heightHandler}
-                    placeholder="height"
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label>Enter Door Size</label>
-                </td>
-                <td>
-                  <input
-                    type="number"
-                    value={roomOf.doorSize}
-                    onChange={lwhDoorSizeHandler}
-                  />
-                </td>
-              </tr>
-            </tbody>
-          </table>
-
+          <div className={classes.rowContainer}>
+            <div className={classes.columnContainer}>
+              <label>Enter LWH</label>
+              <div className={classes.rowContainer}>
+                <input
+                  type="number"
+                  value={roomOf.lengths}
+                  onChange={lengthHandler}
+                  placeholder="length"
+                />
+                <input
+                  type="number"
+                  value={roomOf.width}
+                  onChange={widthHandler}
+                  placeholder="width"
+                />
+                <input
+                  type="number"
+                  value={roomOf.height}
+                  onChange={heightHandler}
+                  placeholder="height"
+                />
+              </div>
+            </div>
+          </div>
+          <div className={classes.columnContainer}>
+            <label>Enter Door Size</label>
+            <input
+              type="number"
+              value={roomOf.doorSize}
+              onChange={lwhDoorSizeHandler}
+            />
+          </div>
           <TilesRelatedInput
             LWHComponent="LWHComponent"
             length={roomOf.lengths}
@@ -516,35 +503,41 @@ const DarkHighLite = () => {
             onTileInABox={tileInABoxHandler}
             onTilePricePerBox={tilePricePerBoxHandler}
           />
-
-          <div>
-            <DarkTile
-              darkTotalBox={outputState.darkBoxes}
-              darkSqft={outputState.darkSqft}
-              onCheckbox={darkCheckboxHandler}
-              onDarkHeightHandler={darkHeightHandler}
-              onDarkWidthHandler={darkWidthHandler}
-              onDarkNumberOfWallHandler={darkNumberOfWallHandler}
-            />
+          <div className={classes.dhlBd}>
+            <div className={classes.dhlLabel}>
+              <label>DHL</label>
+            </div>
+            <div>
+              <DarkTile
+                darkTotalBox={outputState.darkBoxes}
+                darkSqft={outputState.darkSqft}
+                onCheckbox={darkCheckboxHandler}
+                onDarkHeightHandler={darkHeightHandler}
+                onDarkWidthHandler={darkWidthHandler}
+                onDarkNumberOfWallHandler={darkNumberOfWallHandler}
+              />
+            </div>
+            <div>
+              <HighlightTile
+                TotalBox={outputState.highLightBoxes}
+                Sqft={outputState.highLightSqft}
+                onCheckbox={highLightCheckboxHandler}
+                onHighLightHeightHandler={highLightHeightHandler}
+                onHighLightWidthHandler={highLightWidthHandler}
+                onHighLightNumberOfWallHandler={highLightNumberOfWallHandler}
+              />
+            </div>
+            <div>
+              <LightTile
+                TotalBox={outputState.lightBoxes}
+                Sqft={outputState.lightSqft}
+                onCheckbox={lightCheckboxHandler}
+                onLightHeightHandler={lightHeightHandler}
+                onLightWidthHandler={lightWidthHandler}
+                onLightNumberOfWallHandler={lightNumberOfWallHandler}
+              />
+            </div>
           </div>
-          <div>
-            <HighlightTile
-              TotalBox={outputState.highLightBoxes}
-              Sqft={outputState.highLightSqft}
-              onCheckbox={highLightCheckboxHandler}
-              onHighLightHeightHandler={highLightHeightHandler}
-              onHighLightWidthHandler={highLightWidthHandler}
-              onHighLightNumberOfWallHandler={highLightNumberOfWallHandler}
-            />
-          </div>
-          <LightTile
-            TotalBox={outputState.lightBoxes}
-            Sqft={outputState.lightSqft}
-            onCheckbox={lightCheckboxHandler}
-            onLightHeightHandler={lightHeightHandler}
-            onLightWidthHandler={lightWidthHandler}
-            onLightNumberOfWallHandler={lightNumberOfWallHandler}
-          />
           <Button type="submit" />
         </form>
       </div>
@@ -570,27 +563,27 @@ const DarkHighLite = () => {
           }
         />
       )}
-      {showDark &&
+      {showDark && (
         <DarkHighLiteCard
           heading={"Dark"}
           sqrft={outputState.darkSqft}
           darkBoxes={outputState.darkBoxes}
         />
-      }
-      { showHighlight &&
+      )}
+      {showHighlight && (
         <DarkHighLiteCard
           heading={"Highlight"}
           sqrft={outputState.highLightSqft}
           darkBoxes={outputState.highLightBoxes}
         />
-      }
-      { showLight &&
+      )}
+      {showLight && (
         <DarkHighLiteCard
           heading={"Light"}
           sqrft={outputState.lightSqft}
           darkBoxes={outputState.lightBoxes}
         />
-      }
+      )}
     </>
   );
 };
