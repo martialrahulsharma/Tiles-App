@@ -1,6 +1,7 @@
 .rowContainer{
     display: flex;
     flex-direction: row;
+    /* flex-wrap: wrap; */
     column-gap: 30px;   
     margin-bottom: 10px; 
 }
@@ -8,5 +9,15 @@
 .columnContainer{
     display: flex;
     flex-direction: column;
-    /* row-gap: 20px; */
+}
+
+@media screen and (max-width: 700px){
+    .rowContainer{
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-top: 10px;
+    }
+    .rowContainer .columnContainer input{
+        margin-bottom: 10px;
+    }
 }

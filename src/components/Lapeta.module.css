@@ -54,8 +54,7 @@
         width: 100%;
     }
     .lapeta .rowContainer{
-        display: flex;
-        flex-direction: column;
+        flex-wrap: wrap;
         row-gap: 10px;
     }
 }

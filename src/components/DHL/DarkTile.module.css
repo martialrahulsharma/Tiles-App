@@ -5,7 +5,7 @@
     margin-bottom: 10px;
     justify-content: flex-end;
 }
-/* only one element gose right and other left  */
+/* only one element gose left and other left  */
 .rowContainer div:nth-child(1){
     margin-right: auto;
 }
@@ -20,4 +20,10 @@
 }
 label:hover, input[type='checkbox']{
     cursor: pointer;
+}
+@media screen and (max-width: 700px) {
+    .rowContainer{
+        flex-wrap: wrap;
+        row-gap: 5px;
+    }
 }

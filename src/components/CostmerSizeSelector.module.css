@@ -1,6 +1,7 @@
 .costmerSize{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     background-color: aqua;
     gap: 20px;
     padding: 5px;

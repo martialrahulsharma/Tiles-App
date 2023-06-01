@@ -42,3 +42,10 @@
     left: 20px;
     background-color: rgb(31, 197, 197);
 }
+
+@media screen and (max-width: 700px) {
+    .lwh .rowContainer{
+        flex-wrap: wrap;
+        row-gap: 5px;
+    }
+}

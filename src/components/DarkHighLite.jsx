@@ -462,7 +462,7 @@ const DarkHighLite = () => {
           <div className={classes.rowContainer}>
             <div className={classes.columnContainer}>
               <label>Enter LWH</label>
-              <div className={classes.rowContainer}>
+              <div className={classes.rowContainer }>
                 <input
                   type="number"
                   value={roomOf.lengths}
@@ -492,6 +492,7 @@ const DarkHighLite = () => {
               onChange={lwhDoorSizeHandler}
             />
           </div>
+          <div className={classes.rowContainer}>
           <TilesRelatedInput
             LWHComponent="LWHComponent"
             length={roomOf.lengths}
@@ -503,6 +504,8 @@ const DarkHighLite = () => {
             onTileInABox={tileInABoxHandler}
             onTilePricePerBox={tilePricePerBoxHandler}
           />
+
+          </div>
           <div className={classes.dhlBd}>
             <div className={classes.dhlLabel}>
               <label>DHL</label>

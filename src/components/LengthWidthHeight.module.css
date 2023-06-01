@@ -39,3 +39,13 @@
     flex-direction: column;
     row-gap: 5px;
 }
+
+@media screen and (max-width: 700px){
+    .lwh .rowContainer{
+        /* flex-direction: row; */
+        flex-wrap: wrap;
+    }
+    .lwh .rowContainer input{
+        margin-bottom: 10px;
+    }
+}
