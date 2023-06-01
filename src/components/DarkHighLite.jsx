@@ -252,8 +252,8 @@ const DarkHighLite = () => {
   const DHLSubmitHandler = (event) => {
     event.preventDefault();
     setUpdateCard(true);
-    let lapet = roomOf.lengths * 2 + roomOf.width * 2 - roomOf.doorSize;
-    remainRoomWallSqft.wall = roomOf.height * lapet;
+    let lapet = ((roomOf.lengths * 2) + (roomOf.width * 2)- roomOf.doorSize);
+    remainRoomWallSqft.wall = (roomOf.height * lapet);
     // reset DHL data first
     outputState.darkSqft = 0;
     outputState.darkBoxes = 0;
@@ -424,21 +424,21 @@ const DarkHighLite = () => {
       return {
         lapeta: lapet,
         wallSqrFt: (prev.wallSqrFt = lapet * roomOf.height),
-        perTileSqrFt: (prev.perTileSqrFt = (
+        perTileSqrFt: Number(prev.perTileSqrFt = (
           (tileInput.tileLenght * tileInput.tileWidth) /
           144
         ).toFixed(2)),
-        perBoxSqrFt: (prev.perBoxSqrFt = (
+        perBoxSqrFt: Number(prev.perBoxSqrFt = (
           prev.perTileSqrFt * tileInput.tileInABox
         ).toFixed(2)),
         totalTilesBoxes: (prev.totalTilesBoxes =
-          outputState.darkBoxes +
+          Number(outputState.darkBoxes +
           outputState.highLightBoxes +
-          outputState.lightBoxes),
+          outputState.lightBoxes)),
         perTileSqrFtPrice: Math.ceil(
           tileInput.tilePricePerBox / prev.perBoxSqrFt
         ).toFixed(2),
-        totalPrice: tileInput.tilePricePerBox * prev.totalTilesBoxes,
+        totalPrice: (tileInput.tilePricePerBox * outputState.totalTilesBoxes),
 
         darkSqft: prev.darkSqft,
         darkBoxes: (prev.darkBoxes = Math.ceil(
