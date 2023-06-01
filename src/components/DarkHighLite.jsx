@@ -18,17 +18,17 @@ const DarkHighLite = () => {
   });
 
   const [roomOf, setRoomOf] = useState({
-    lengths: LWHComponentTiles.length,
-    width: LWHComponentTiles.width,
-    height: LWHComponentTiles.height,
-    doorSize: LWHComponentTiles.doorSize,
+    lengths: 0,
+    width: 0,
+    height: 0,
+    doorSize: 0,
   });
 
   const [tileInput, setTileInput] = useState({
-    tileLenght: LWHComponentTiles.tileLength,
-    tileWidth: LWHComponentTiles.tileWidth,
-    tileInABox: LWHComponentTiles.tileInABox,
-    tilePricePerBox: LWHComponentTiles.tilePricePerBox,
+    tileLenght: 0,
+    tileWidth: 0,
+    tileInABox: 0,
+    tilePricePerBox: 0,
   });
   const [darkTile, setDarkTile] = useState({
     checkbox: false,
