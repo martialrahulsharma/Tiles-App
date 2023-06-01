@@ -1,0 +1,7 @@
+.errorCard{
+    display: flex;
+    width: auto;
+    height: auto;
+    background-color: white;
+    border-radius: 10px;
+}

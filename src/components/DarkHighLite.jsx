@@ -419,8 +419,8 @@ const DarkHighLite = () => {
     setShowDark(true);
     setShowHighlight(true);
     setShowLight(true);
-    console.log(outputState.totalTilesBoxes);
     setOutputState((prev) => {
+      console.log(prev);
       return {
         lapeta: lapet,
         wallSqrFt: (prev.wallSqrFt = lapet * roomOf.height),
