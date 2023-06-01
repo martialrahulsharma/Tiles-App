@@ -32,16 +32,16 @@ const DarkHighLite = () => {
   });
   const [darkTile, setDarkTile] = useState({
     checkbox: false,
-    height: "",
-    width: "",
+    height: 0,
+    width: 0,
     numberOfWall: 1,
     setNumberOfWall: 4,
   });
   //---------HighLight state start---------
   const [highLightTile, setHighLightTile] = useState({
     checkbox: false,
-    height: "",
-    width: "",
+    height: 0,
+    width: 0,
     numberOfWall: 1,
     setNumberOfWall: 4,
   });
@@ -49,8 +49,8 @@ const DarkHighLite = () => {
   //---------Light state start---------
   const [lightTile, setlightTile] = useState({
     checkbox: false,
-    height: "",
-    width: "",
+    height: 0,
+    width: 0,
     numberOfWall: 1,
     setNumberOfWall: 4,
   });
@@ -419,6 +419,7 @@ const DarkHighLite = () => {
     setShowDark(true);
     setShowHighlight(true);
     setShowLight(true);
+    console.log(outputState.totalTilesBoxes);
     setOutputState((prev) => {
       return {
         lapeta: lapet,
