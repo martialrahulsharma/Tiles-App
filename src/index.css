@@ -1,9 +1,11 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body{
-  background-color: rgb(245, 239, 239);
+body {
+  background: url("https://gharpedias3files.s3.amazonaws.com/uploads/2018/08/0205090001-1-Tiling-Work-Installation-shutterstock_196421168.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
