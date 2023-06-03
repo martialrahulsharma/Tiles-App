@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import TilesRelatedInput from "./TilesRelatedInput";
 import Card from "./Card";
+import ErrorModal from '../UI/ErrorModal';
 import classes from "./Lapeta.module.css";
 import Button from "./Button";
 
@@ -34,6 +35,7 @@ const Lapeta = () => {
   });
 
   const [updateCard, setUpdateCard] = useState(false);
+  const [error, setError] = useState();
 
   const lapetaHandler = (event) => {
     setRoomOf((prev) => {
@@ -124,8 +126,19 @@ const Lapeta = () => {
     });
   };
 
+  const errorHandler = () =>{
+    setError(null);
+  }
+
   const submitHandle = (event) => {
     event.preventDefault();
+    if(roomOf.lapeta == ("" || 0)){
+      setError({
+        title: 'Invalid Lapeta',
+        message: 'Please check lapeta field.',
+      })
+      return;
+    }
     let lapet = roomOf.lapeta - roomOf.doorSize;
     setUpdateCard(true);
     setOutputState((prev) => {
@@ -190,9 +203,10 @@ const Lapeta = () => {
             onTileInABox={tileInABoxHandler}
             onTilePricePerBox={tilePricePerBoxHandler}
           />
-          <Button type="submit" />
+          <Button type="submit" >Submit</Button>
         </form>
       </div>
+      {error && <ErrorModal title={error.title} message={error.message} onConfirm={errorHandler}/>}
       {updateCard && (
         <Card
           OutputHeading="Lapeta Output"

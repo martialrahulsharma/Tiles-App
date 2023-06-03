@@ -7,6 +7,7 @@ import HighlightTile from "./DHL/HighLightTile";
 import LightTile from "./DHL/LightTile";
 import classes from "./DarkHighLite.module.css";
 import Button from "./Button";
+import ErrorModal from "../UI/ErrorModal";
 
 let LWHComponentTiles;
 
@@ -77,6 +78,7 @@ const DarkHighLite = () => {
   const [showDark, setShowDark] = useState(false);
   const [showHighlight, setShowHighlight] = useState(false);
   const [showLight, setShowLight] = useState(false);
+  const [error, setError] = useState();
 
   const lengthHandler = (event) => {
     setRoomOf((prev) => {
@@ -249,8 +251,20 @@ const DarkHighLite = () => {
   };
   // ------------------Light tile end functionality---------------
 
+  const errorHandler = () =>{
+    setError(null);
+  }
+
+
   const DHLSubmitHandler = (event) => {
     event.preventDefault();
+    if((roomOf.lengths && roomOf.width && roomOf.height && (darkTile.checkbox || highLightTile.checkbox || lightTile.checkbox)) == false || ("" || 0)){
+      setError({
+        title: 'Invalid DHL',
+        message: 'Please, Select at least one checkbox and check LWH field.',
+      })
+      return;
+    }
     setUpdateCard(true);
     let lapet = ((roomOf.lengths * 2) + (roomOf.width * 2)- roomOf.doorSize);
     remainRoomWallSqft.wall = (roomOf.height * lapet);
@@ -542,9 +556,10 @@ const DarkHighLite = () => {
               />
             </div>
           </div>
-          <Button type="submit" />
+          <Button type="submit" >Submit</Button>
         </form>
       </div>
+      {error && <ErrorModal title={error.title} message={error.message} onConfirm={errorHandler}/>}
       {updateCard && (
         <Card
           OutputHeading="DHL Output"

@@ -4,6 +4,7 @@ import Card from "./Card";
 import classes from "./LengthWidthHeight.module.css";
 import { useState } from "react";
 import Button from "./Button";
+import ErrorModal from "../UI/ErrorModal";
 
 let LWHComponentTiles;
 
@@ -34,6 +35,7 @@ const LengthWidthHeight = () => {
   });
 
   const [updateCard, setUpdateCard] = useState(false);
+  const [error, setError] = useState();
 
   const lengthHandler = (event) => {
     setRoomOf((prev) => {
@@ -128,8 +130,19 @@ const LengthWidthHeight = () => {
     });
   };
 
+  const errorHandler = () =>{
+    setError(null);
+  }
+
   const LWHSubmitHandler = (event) => {
     event.preventDefault();
+    if((roomOf.lengths && roomOf.width && roomOf.height) == ("" || 0)){
+      setError({
+        title: 'Invalid LWH',
+        message: 'Please check length, width and field.',
+      })
+      return;
+    }
     setUpdateCard(true);
 
     event.preventDefault();
@@ -205,9 +218,10 @@ const LengthWidthHeight = () => {
             onTileInABox={tileInABoxHandler}
             onTilePricePerBox={tilePricePerBoxHandler}
           />
-          <Button type="submit" />
+          <Button type="submit" >Submit</Button>
         </form>
       </div>
+      {error && <ErrorModal title={error.title} message={error.message} onConfirm={errorHandler}/>}
       {updateCard && (
         <Card
           OutputHeading="LWH Output"

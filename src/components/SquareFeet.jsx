@@ -3,6 +3,7 @@ import TilesRelatedInput from "./TilesRelatedInput";
 import Card from "./Card";
 import classes from "./SquareFeet.module.css";
 import Button from "./Button";
+import ErrorModal from "../UI/ErrorModal";
 
 let SqrFtComponentTiles;
 const SquareFeet = () => {
@@ -29,6 +30,7 @@ const SquareFeet = () => {
   });
 
   const [updateCard, setUpdateCard] = useState(false);
+  const [error, setError] = useState();
 
   const [squareFeet, setSquareFeet] = useState("");
 
@@ -96,8 +98,19 @@ const SquareFeet = () => {
     });
   };
 
+  const errorHandler = () =>{
+    setError(null);
+  }
+
   const sqrFtSubmitHandler = (event) => {
     event.preventDefault();
+    if(roomOf.sqrft == ("" || 0)){
+      setError({
+        title: 'Invalid Square Feet',
+        message: 'Please, Check Sqrft field',
+      })
+      return;
+    }
     setUpdateCard(true);
 
     event.preventDefault();
@@ -137,9 +150,10 @@ const SquareFeet = () => {
             onTileInABox={tileInABoxHandler}
             onTilePricePerBox={tilePricePerBoxHandler}
           />
-          <Button type="submit" />
+          <Button type="submit">Submit</Button>
         </form>
       </div>
+      {error && <ErrorModal title={error.title} message={error.message} onConfirm={errorHandler}/>}
       {updateCard && (
         <Card
           OutputHeading="SqrFt Output"

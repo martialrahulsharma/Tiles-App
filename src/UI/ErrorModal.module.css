@@ -18,17 +18,22 @@
   }
   
   .header {
-    background: #4f005f;
+    background: #00FFFF;
     padding: 1rem;
   }
   
   .header h2 {
     margin: 0;
-    color: white;
+    color: rgb(0, 0, 0);
   }
   
   .content {
     padding: 1rem;
+  }
+
+  .content p{
+    font-weight: 100;
+    font-size: larger;
   }
   
   .actions {
