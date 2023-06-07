@@ -151,7 +151,7 @@ const LengthWidthHeight = () => {
     setOutputState((prev) => {
       return {
         lapeta: lapet,
-        wallSqrFt: (prev.wallSqrFt = lapet * roomOf.height),
+        wallSqrFt: Math.ceil(prev.wallSqrFt = lapet * roomOf.height),
         perTileSqrFt: (prev.perTileSqrFt =
           (tileInput.tileLenght * tileInput.tileWidth) / 144),
         perBoxSqrFt: (prev.perBoxSqrFt =

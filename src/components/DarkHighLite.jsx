@@ -23,6 +23,7 @@ const DarkHighLite = () => {
     width: 0,
     height: 0,
     doorSize: 0,
+    lapeta: 0,
   });
 
   const [tileInput, setTileInput] = useState({
@@ -89,7 +90,7 @@ const DarkHighLite = () => {
           length: Number(event.target.value),
         })
       );
-      return { ...prev, lengths: (roomOf.lengths = event.target.value) };
+      return { ...prev, lengths: (roomOf.lengths = event.target.value)};
     });
   };
   const widthHandler = (event) => {
@@ -101,7 +102,7 @@ const DarkHighLite = () => {
           width: Number(event.target.value),
         })
       );
-      return { ...prev, width: (roomOf.width = event.target.value) };
+      return { ...prev, width: (roomOf.width = event.target.value)};
     });
   };
   const heightHandler = (event) => {
@@ -113,7 +114,7 @@ const DarkHighLite = () => {
           height: Number(event.target.value),
         })
       );
-      return { ...prev, height: (roomOf.height = event.target.value) };
+      return { ...prev, height: (roomOf.height = event.target.value)};
     });
   };
   const lwhDoorSizeHandler = (event) => {
@@ -125,7 +126,7 @@ const DarkHighLite = () => {
           doorSize: Number(event.target.value),
         })
       );
-      return { ...prev, doorSize: (roomOf.doorSize = event.target.value) };
+      return { ...prev, doorSize: (roomOf.doorSize = event.target.value)};
     });
   };
 
@@ -434,10 +435,9 @@ const DarkHighLite = () => {
     setShowHighlight(true);
     setShowLight(true);
     setOutputState((prev) => {
-      console.log(prev);
       return {
         lapeta: lapet,
-        wallSqrFt: (prev.wallSqrFt = lapet * roomOf.height),
+        wallSqrFt: Math.ceil(prev.wallSqrFt = lapet * roomOf.height),
         perTileSqrFt: Number(prev.perTileSqrFt = (
           (tileInput.tileLenght * tileInput.tileWidth) /
           144
@@ -454,15 +454,15 @@ const DarkHighLite = () => {
         ).toFixed(2),
         totalPrice: (tileInput.tilePricePerBox * outputState.totalTilesBoxes),
 
-        darkSqft: prev.darkSqft,
+        darkSqft: Math.ceil(prev.darkSqft),
         darkBoxes: (prev.darkBoxes = Math.ceil(
           prev.darkSqft / prev.perBoxSqrFt
         )),
-        highLightSqft: prev.highLightSqft,
+        highLightSqft: Math.ceil(prev.highLightSqft),
         highLightBoxes: (prev.highLightBoxes = Math.ceil(
           prev.highLightSqft / prev.perBoxSqrFt
         )),
-        lightSqft: prev.lightSqft,
+        lightSqft: Math.ceil(prev.lightSqft),
         lightBoxes: (prev.lightBoxes = Math.ceil(
           prev.lightSqft / prev.perBoxSqrFt
         )),
