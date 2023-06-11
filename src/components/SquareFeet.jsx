@@ -98,17 +98,17 @@ const SquareFeet = () => {
     });
   };
 
-  const errorHandler = () =>{
+  const errorHandler = () => {
     setError(null);
-  }
+  };
 
   const sqrFtSubmitHandler = (event) => {
     event.preventDefault();
-    if(roomOf.sqrft == ("" || 0)){
+    if (roomOf.sqrft == ("" || 0)) {
       setError({
-        title: 'Invalid Square Feet',
-        message: 'Please, Check Sqrft field',
-      })
+        title: "Invalid Square Feet",
+        message: "Please, Check Sqrft field",
+      });
       return;
     }
     setUpdateCard(true);
@@ -141,10 +141,15 @@ const SquareFeet = () => {
               type="number"
               value={roomOf.sqrft}
               onChange={squareFeetHandler}
+              placeholder="sqrft"
             />
           </div>
           <TilesRelatedInput
             sqrft={roomOf.sqrft}
+            tileLength={SqrFtComponentTiles.tileLength}
+            tileWidth={SqrFtComponentTiles.tileWidth}
+            tilePricePerBox={SqrFtComponentTiles.tileInABox}
+            pricePerBox={SqrFtComponentTiles.tilePricePerBox}
             onLengthTile={tileLengthHandler}
             onWidthTile={tileWidthHandler}
             onTileInABox={tileInABoxHandler}
@@ -153,7 +158,13 @@ const SquareFeet = () => {
           <Button type="submit">Submit</Button>
         </form>
       </div>
-      {error && <ErrorModal title={error.title} message={error.message} onConfirm={errorHandler}/>}
+      {error && (
+        <ErrorModal
+          title={error.title}
+          message={error.message}
+          onConfirm={errorHandler}
+        />
+      )}
       {updateCard && (
         <Card
           OutputHeading="SqrFt Output"

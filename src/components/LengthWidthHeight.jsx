@@ -130,17 +130,17 @@ const LengthWidthHeight = () => {
     });
   };
 
-  const errorHandler = () =>{
+  const errorHandler = () => {
     setError(null);
-  }
+  };
 
   const LWHSubmitHandler = (event) => {
     event.preventDefault();
-    if((roomOf.lengths && roomOf.width && roomOf.height) == ("" || 0)){
+    if ((roomOf.lengths && roomOf.width && roomOf.height) == ("" || 0)) {
       setError({
-        title: 'Invalid LWH',
-        message: 'Please check length, width and field.',
-      })
+        title: "Invalid LWH",
+        message: "Please check length, width and field.",
+      });
       return;
     }
     setUpdateCard(true);
@@ -151,7 +151,7 @@ const LengthWidthHeight = () => {
     setOutputState((prev) => {
       return {
         lapeta: lapet,
-        wallSqrFt: Math.ceil(prev.wallSqrFt = lapet * roomOf.height),
+        wallSqrFt: Math.ceil((prev.wallSqrFt = lapet * roomOf.height)),
         perTileSqrFt: (prev.perTileSqrFt =
           (tileInput.tileLenght * tileInput.tileWidth) / 144),
         perBoxSqrFt: (prev.perBoxSqrFt =
@@ -204,6 +204,7 @@ const LengthWidthHeight = () => {
               type="number"
               value={roomOf.doorSize}
               onChange={lwhDoorSizeHandler}
+              placeholder="door size"
             />
           </div>
 
@@ -213,15 +214,25 @@ const LengthWidthHeight = () => {
             width={roomOf.width}
             height={roomOf.height}
             doorSize={roomOf.doorSize}
+            tileLength={LWHComponentTiles.tileLength}
+            tileWidth={LWHComponentTiles.tileWidth}
+            tilePricePerBox={LWHComponentTiles.tileInABox}
+            pricePerBox={LWHComponentTiles.tilePricePerBox}
             onLengthTile={tileLengthHandler}
             onWidthTile={tileWidthHandler}
             onTileInABox={tileInABoxHandler}
             onTilePricePerBox={tilePricePerBoxHandler}
           />
-          <Button type="submit" >Submit</Button>
+          <Button type="submit">Submit</Button>
         </form>
       </div>
-      {error && <ErrorModal title={error.title} message={error.message} onConfirm={errorHandler}/>}
+      {error && (
+        <ErrorModal
+          title={error.title}
+          message={error.message}
+          onConfirm={errorHandler}
+        />
+      )}
       {updateCard && (
         <Card
           OutputHeading="LWH Output"

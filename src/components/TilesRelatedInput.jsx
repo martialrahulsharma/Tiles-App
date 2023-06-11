@@ -4,10 +4,10 @@ import classes from "./TilesRelatedInput.module.css";
 // import classes from "./Lapeta.module.css";
 
 const TilesRelatedInput = (props) => {
-  const [lengthValue, setLengthValue] = useState(0);
-  const [widthValue, setWidthValue] = useState(0);
-  const [tilesInABox, setTilesInABox] = useState(0);
-  const [tilesPricePerBox, setTilesPricePerBox] = useState(0);
+  const [lengthValue, setLengthValue] = useState(props.tileLength);
+  const [widthValue, setWidthValue] = useState(props.tileWidth);
+  const [tilesInABox, setTilesInABox] = useState(props.tilePricePerBox);
+  const [tilesPricePerBox, setTilesPricePerBox] = useState(props.pricePerBox);
 
   const lengthValueHandler = (event) => {
     setLengthValue(event.target.value);
@@ -51,7 +51,7 @@ const TilesRelatedInput = (props) => {
       </div>
       <div className={classes.columnContainer}>
         <label>Tiles in a box</label>
-        <input type="number" value={tilesInABox} onChange={tileInBoxhHandler} />
+        <input type="number" value={tilesInABox} onChange={tileInBoxhHandler} placeholder="tiles/box" />
       </div>
       <div className={classes.columnContainer}>
         <label>Tiles price/box</label>
@@ -59,6 +59,7 @@ const TilesRelatedInput = (props) => {
           type="number"
           value={tilesPricePerBox}
           onChange={tilePriceHandler}
+          placeholder="price/box"
         />
       </div>
     </div>

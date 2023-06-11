@@ -18,47 +18,48 @@ sessionStorage.setItem(
 sessionStorage.setItem(
   "LWHComponent",
   JSON.stringify({
-    length: 0,
-    width: 0,
-    height: 0,
-    doorSize: 0,
-    tileLength: 0,
-    tileWidth: 0,
-    tileInABox: 0,
-    tilePricePerBox: 0,
+    length: "",
+    width: "",
+    height: "",
+    doorSize: "",
+    tileLength: "",
+    tileWidth: "",
+    tileInABox: "",
+    tilePricePerBox: "",
   })
 );
 sessionStorage.setItem(
   "SqrFtComponent",
   JSON.stringify({
-    sqrft: 0,
-    tileLength: 0,
-    tileWidth: 0,
-    tileInABox: 0,
-    tilePricePerBox: 0,
+    sqrft: "",
+    tileLength: "",
+    tileWidth: "",
+    tileInABox: "",
+    tilePricePerBox: "",
   })
 );
 sessionStorage.setItem(
   "LWComponent",
   JSON.stringify({
-    length: 0,
-    width: 0,
-    tileLength: 0,
-    tileWidth: 0,
-    tileInABox: 0,
-    tilePricePerBox: 0,
+    length: "",
+    width: "",
+    tileLength: "",
+    tileWidth: "",
+    tileInABox: "",
+    tilePricePerBox: "",
   })
 );
 sessionStorage.setItem(
   "DHLComponent",
   JSON.stringify({
-    length: 0,
-    width: 0,
-    height: 0,
-    tileLength: 0,
-    tileWidth: 0,
-    tileInABox: 0,
-    tilePricePerBox: 0,
+    length: "",
+    width: "",
+    height: "",
+    doorSize: "",
+    tileLength: "",
+    tileWidth: "",
+    tileInABox: "",
+    tilePricePerBox: "",
   })
 );
 let costmerSizeProvided = ["Lapeta", "LWH", "Sqr Ft", "LW", "DHL"];

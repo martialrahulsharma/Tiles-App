@@ -172,6 +172,7 @@ const Lapeta = () => {
                 type="number"
                 value={roomOf.lapeta}
                 onChange={lapetaHandler}
+                placeholder="lapeta"
               />
             </div>
             <div className={classes.columnContainer}>
@@ -181,6 +182,7 @@ const Lapeta = () => {
                 type="number"
                 value={roomOf.height}
                 onChange={heightHandler}
+                placeholder="height"
               />
             </div>
             <div className={classes.columnContainer}>
@@ -190,6 +192,7 @@ const Lapeta = () => {
                 type="number"
                 value={roomOf.doorSize}
                 onChange={doorSizeHandler}
+                placeholder="door size"
               />
             </div>
           </div>
@@ -198,6 +201,10 @@ const Lapeta = () => {
             lapeta={roomOf.lapeta}
             height={roomOf.height}
             doorSize={roomOf.doorSize}
+            tileLength={lapetaComponentTiles.tileLength}
+            tileWidth={lapetaComponentTiles.tileWidth}
+            tilePricePerBox={lapetaComponentTiles.tileInABox}
+            pricePerBox={lapetaComponentTiles.tilePricePerBox}
             onLengthTile={tileLengthHandler}
             onWidthTile={tileWidthHandler}
             onTileInABox={tileInABoxHandler}

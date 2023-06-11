@@ -103,17 +103,17 @@ const LengthWidth = () => {
     });
   };
 
-  const errorHandler = () =>{
+  const errorHandler = () => {
     setError(null);
-  }
+  };
 
   const LWSubmitHandler = (event) => {
     event.preventDefault();
-    if((roomOf.lengths && roomOf.width) == ("" || 0)){
+    if ((roomOf.lengths && roomOf.width) == ("" || 0)) {
       setError({
-        title: 'Invalid length, width',
-        message: 'Please, Check length and width field',
-      })
+        title: "Invalid length, width",
+        message: "Please, Check length and width field",
+      });
       return;
     }
     setUpdateCard(true);
@@ -124,7 +124,7 @@ const LengthWidth = () => {
     setOutputState((prev) => {
       return {
         lapeta: (prev.lapeta = lapeta),
-        wallSqrFt: Math.ceil(prev.wallSqrFt = roomOf.lengths * roomOf.width),
+        wallSqrFt: Math.ceil((prev.wallSqrFt = roomOf.lengths * roomOf.width)),
         perTileSqrFt: (prev.perTileSqrFt =
           (tileInput.tileLenght * tileInput.tileWidth) / 144),
         perBoxSqrFt: (prev.perBoxSqrFt =
@@ -168,15 +168,25 @@ const LengthWidth = () => {
             LWHComponent="LWComponent"
             length={roomOf.lengths}
             width={roomOf.width}
+            tileLength={LWComponentTiles.tileLength}
+            tileWidth={LWComponentTiles.tileWidth}
+            tilePricePerBox={LWComponentTiles.tileInABox}
+            pricePerBox={LWComponentTiles.tilePricePerBox}
             onLengthTile={tileLengthHandler}
             onWidthTile={tileWidthHandler}
             onTileInABox={tileInABoxHandler}
             onTilePricePerBox={tilePricePerBoxHandler}
           />
-          <Button type="submit" >Submit</Button>
+          <Button type="submit">Submit</Button>
         </form>
       </div>
-      {error && <ErrorModal title={error.title} message={error.message} onConfirm={errorHandler}/>}
+      {error && (
+        <ErrorModal
+          title={error.title}
+          message={error.message}
+          onConfirm={errorHandler}
+        />
+      )}
       {updateCard && (
         <Card
           OutputHeading="LW Output"

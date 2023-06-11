@@ -9,20 +9,20 @@ import classes from "./DarkHighLite.module.css";
 import Button from "./Button";
 import ErrorModal from "../UI/ErrorModal";
 
-let LWHComponentTiles;
+let DHLComponentTiles;
 
 const DarkHighLite = () => {
-  LWHComponentTiles = JSON.parse(sessionStorage.LWHComponent);
+  DHLComponentTiles = JSON.parse(sessionStorage.DHLComponent);
 
   const [remainRoomWallSqft, setRemainRoomWallSqft] = useState({
     wall: 0,
   });
 
   const [roomOf, setRoomOf] = useState({
-    lengths: 0,
-    width: 0,
-    height: 0,
-    doorSize: 0,
+    lengths: DHLComponentTiles.length,
+    width: DHLComponentTiles.width,
+    height: DHLComponentTiles.height,
+    doorSize: DHLComponentTiles.doorSize,
     lapeta: 0,
   });
 
@@ -84,57 +84,57 @@ const DarkHighLite = () => {
   const lengthHandler = (event) => {
     setRoomOf((prev) => {
       sessionStorage.setItem(
-        "LWHComponent",
+        "DHLComponent",
         JSON.stringify({
-          ...LWHComponentTiles,
+          ...DHLComponentTiles,
           length: Number(event.target.value),
         })
       );
-      return { ...prev, lengths: (roomOf.lengths = event.target.value)};
+      return { ...prev, lengths: (roomOf.lengths = event.target.value) };
     });
   };
   const widthHandler = (event) => {
     setRoomOf((prev) => {
       sessionStorage.setItem(
-        "LWHComponent",
+        "DHLComponent",
         JSON.stringify({
-          ...LWHComponentTiles,
+          ...DHLComponentTiles,
           width: Number(event.target.value),
         })
       );
-      return { ...prev, width: (roomOf.width = event.target.value)};
+      return { ...prev, width: (roomOf.width = event.target.value) };
     });
   };
   const heightHandler = (event) => {
     setRoomOf((prev) => {
       sessionStorage.setItem(
-        "LWHComponent",
+        "DHLComponent",
         JSON.stringify({
-          ...LWHComponentTiles,
+          ...DHLComponentTiles,
           height: Number(event.target.value),
         })
       );
-      return { ...prev, height: (roomOf.height = event.target.value)};
+      return { ...prev, height: (roomOf.height = event.target.value) };
     });
   };
   const lwhDoorSizeHandler = (event) => {
     setRoomOf((prev) => {
       sessionStorage.setItem(
-        "LWHComponent",
+        "DHLComponent",
         JSON.stringify({
-          ...LWHComponentTiles,
+          ...DHLComponentTiles,
           doorSize: Number(event.target.value),
         })
       );
-      return { ...prev, doorSize: (roomOf.doorSize = event.target.value)};
+      return { ...prev, doorSize: (roomOf.doorSize = event.target.value) };
     });
   };
 
   const tileLengthHandler = (tileLenght) => {
     setTileInput((state) => {
       sessionStorage.setItem(
-        "LWHComponent",
-        JSON.stringify({ ...LWHComponentTiles, tileLength: Number(tileLenght) })
+        "DHLComponent",
+        JSON.stringify({ ...DHLComponentTiles, tileLength: Number(tileLenght) })
       );
       return { ...state, tileLenght: (state.tileLenght = tileLenght) };
     });
@@ -143,8 +143,8 @@ const DarkHighLite = () => {
   const tileWidthHandler = (tileWidth) => {
     setTileInput((state) => {
       sessionStorage.setItem(
-        "LWHComponent",
-        JSON.stringify({ ...LWHComponentTiles, tileWidth: Number(tileWidth) })
+        "DHLComponent",
+        JSON.stringify({ ...DHLComponentTiles, tileWidth: Number(tileWidth) })
       );
       return { ...state, tileWidth: (state.tileWidth = tileWidth) };
     });
@@ -152,8 +152,8 @@ const DarkHighLite = () => {
   const tileInABoxHandler = (tileInABox) => {
     setTileInput((state) => {
       sessionStorage.setItem(
-        "LWHComponent",
-        JSON.stringify({ ...LWHComponentTiles, tileInABox: Number(tileInABox) })
+        "DHLComponent",
+        JSON.stringify({ ...DHLComponentTiles, tileInABox: Number(tileInABox) })
       );
       return { ...state, tileInABox: (state.tileInABox = tileInABox) };
     });
@@ -161,9 +161,9 @@ const DarkHighLite = () => {
   const tilePricePerBoxHandler = (tilePricePerBox) => {
     setTileInput((state) => {
       sessionStorage.setItem(
-        "LWHComponent",
+        "DHLComponent",
         JSON.stringify({
-          ...LWHComponentTiles,
+          ...DHLComponentTiles,
           tilePricePerBox: Number(tilePricePerBox),
         })
       );
@@ -252,23 +252,30 @@ const DarkHighLite = () => {
   };
   // ------------------Light tile end functionality---------------
 
-  const errorHandler = () =>{
+  const errorHandler = () => {
     setError(null);
-  }
-
+  };
 
   const DHLSubmitHandler = (event) => {
     event.preventDefault();
-    if((roomOf.lengths && roomOf.width && roomOf.height && (darkTile.checkbox || highLightTile.checkbox || lightTile.checkbox)) == false || ("" || 0)){
+    if (
+      (roomOf.lengths &&
+        roomOf.width &&
+        roomOf.height &&
+        (darkTile.checkbox || highLightTile.checkbox || lightTile.checkbox)) ==
+        false ||
+      "" ||
+      0
+    ) {
       setError({
-        title: 'Invalid DHL',
-        message: 'Please, Select at least one checkbox and check LWH field.',
-      })
+        title: "Invalid DHL",
+        message: "Please, Select at least one checkbox and check LWH field.",
+      });
       return;
     }
     setUpdateCard(true);
-    let lapet = ((roomOf.lengths * 2) + (roomOf.width * 2)- roomOf.doorSize);
-    remainRoomWallSqft.wall = (roomOf.height * lapet);
+    let lapet = roomOf.lengths * 2 + roomOf.width * 2 - roomOf.doorSize;
+    remainRoomWallSqft.wall = roomOf.height * lapet;
     // reset DHL data first
     outputState.darkSqft = 0;
     outputState.darkBoxes = 0;
@@ -437,22 +444,27 @@ const DarkHighLite = () => {
     setOutputState((prev) => {
       return {
         lapeta: lapet,
-        wallSqrFt: Math.ceil(prev.wallSqrFt = lapet * roomOf.height),
-        perTileSqrFt: Number(prev.perTileSqrFt = (
-          (tileInput.tileLenght * tileInput.tileWidth) /
-          144
-        ).toFixed(2)),
-        perBoxSqrFt: Number(prev.perBoxSqrFt = (
-          prev.perTileSqrFt * tileInput.tileInABox
-        ).toFixed(2)),
-        totalTilesBoxes: (prev.totalTilesBoxes =
-          Number(outputState.darkBoxes +
-          outputState.highLightBoxes +
-          outputState.lightBoxes)),
+        wallSqrFt: Math.ceil((prev.wallSqrFt = lapet * roomOf.height)),
+        perTileSqrFt: Number(
+          (prev.perTileSqrFt = (
+            (tileInput.tileLenght * tileInput.tileWidth) /
+            144
+          ).toFixed(2))
+        ),
+        perBoxSqrFt: Number(
+          (prev.perBoxSqrFt = (
+            prev.perTileSqrFt * tileInput.tileInABox
+          ).toFixed(2))
+        ),
+        totalTilesBoxes: (prev.totalTilesBoxes = Number(
+          outputState.darkBoxes +
+            outputState.highLightBoxes +
+            outputState.lightBoxes
+        )),
         perTileSqrFtPrice: Math.ceil(
           tileInput.tilePricePerBox / prev.perBoxSqrFt
         ).toFixed(2),
-        totalPrice: (tileInput.tilePricePerBox * outputState.totalTilesBoxes),
+        totalPrice: tileInput.tilePricePerBox * outputState.totalTilesBoxes,
 
         darkSqft: Math.ceil(prev.darkSqft),
         darkBoxes: (prev.darkBoxes = Math.ceil(
@@ -477,7 +489,7 @@ const DarkHighLite = () => {
           <div className={classes.rowContainer}>
             <div className={classes.columnContainer}>
               <label>Enter LWH</label>
-              <div className={classes.rowContainer }>
+              <div className={classes.rowContainer}>
                 <input
                   type="number"
                   value={roomOf.lengths}
@@ -505,21 +517,25 @@ const DarkHighLite = () => {
               type="number"
               value={roomOf.doorSize}
               onChange={lwhDoorSizeHandler}
+              placeholder="door size"
             />
           </div>
           <div className={classes.rowContainer}>
-          <TilesRelatedInput
-            LWHComponent="LWHComponent"
-            length={roomOf.lengths}
-            width={roomOf.width}
-            height={roomOf.height}
-            doorSize={roomOf.doorSize}
-            onLengthTile={tileLengthHandler}
-            onWidthTile={tileWidthHandler}
-            onTileInABox={tileInABoxHandler}
-            onTilePricePerBox={tilePricePerBoxHandler}
-          />
-
+            <TilesRelatedInput
+              LWHComponent="LWHComponent"
+              length={roomOf.lengths}
+              width={roomOf.width}
+              height={roomOf.height}
+              doorSize={roomOf.doorSize}
+              tileLength={DHLComponentTiles.tileLength}
+              tileWidth={DHLComponentTiles.tileWidth}
+              tilePricePerBox={DHLComponentTiles.tileInABox}
+              pricePerBox={DHLComponentTiles.tilePricePerBox}
+              onLengthTile={tileLengthHandler}
+              onWidthTile={tileWidthHandler}
+              onTileInABox={tileInABoxHandler}
+              onTilePricePerBox={tilePricePerBoxHandler}
+            />
           </div>
           <div className={classes.dhlBd}>
             <div className={classes.dhlLabel}>
@@ -556,10 +572,16 @@ const DarkHighLite = () => {
               />
             </div>
           </div>
-          <Button type="submit" >Submit</Button>
+          <Button type="submit">Submit</Button>
         </form>
       </div>
-      {error && <ErrorModal title={error.title} message={error.message} onConfirm={errorHandler}/>}
+      {error && (
+        <ErrorModal
+          title={error.title}
+          message={error.message}
+          onConfirm={errorHandler}
+        />
+      )}
       {updateCard && (
         <Card
           OutputHeading="DHL Output"
