@@ -34,7 +34,7 @@ const Lapeta = () => {
     totalPrice: 0,
   });
 
-  const [updateCard, setUpdateCard] = useState(false);
+  const [updateCard, setUpdateCard] = useState(true);
   const [error, setError] = useState();
 
   const lapetaHandler = (event) => {
@@ -216,7 +216,7 @@ const Lapeta = () => {
       {error && <ErrorModal title={error.title} message={error.message} onConfirm={errorHandler}/>}
       {updateCard && (
         <Card
-          OutputHeading="Lapeta Output"
+          OutputHeading="Results"
           lapeta={outputState.lapeta}
           wallSqr={outputState.wallSqrFt}
           perTileSqrFtPrice={

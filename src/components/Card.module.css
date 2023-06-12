@@ -5,7 +5,7 @@
     
     height: auto;
     /* margin-top: 10px; */
-    padding: 10px;
+    padding: 10px 0px 10px 0px;
     /* border: 1px solid black; */
     /* border-radius: 20px; */
     background-color: rgb(235, 235, 235);
@@ -19,7 +19,10 @@
 .card .rowContainer{
     display: flex;
     flex-direction: row;
-    row-gap: 10px;
     column-gap: 20px;
-    margin-top: 20px;
+    margin-top: 5px;
+}
+.card .heading{
+    background-color: aqua;
+    padding-left: 5px;
 }
