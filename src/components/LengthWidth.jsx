@@ -2,7 +2,7 @@ import React from "react";
 import TilesRelatedInput from "./TilesRelatedInput";
 import Card from "./Card";
 import classes from "./LengthWidth.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Button from "./Button";
 import ErrorModal from "../UI/ErrorModal";
 
@@ -189,7 +189,6 @@ const LengthWidth = () => {
       )}
       {updateCard && (
         <Card
-          OutputHeading="LW Output"
           lapeta={outputState.lapeta}
           wallSqr={outputState.wallSqrFt}
           perTileSqrFtPrice={

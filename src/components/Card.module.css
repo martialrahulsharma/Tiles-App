@@ -1,40 +1,48 @@
 .card {
-    display: flex;
-    flex-direction: column;
-    /* margin: auto; */
-    
-    height: auto;
-    /* margin-top: 10px; */
-    padding: 10px 0px 10px 0px;
-    /* border: 1px solid black; */
-    /* border-radius: 20px; */
-    background-color: rgb(235, 235, 235);
+  display: flex;
+  flex-direction: column;
+  /* margin: auto; */
+
+  height: auto;
+  /* margin-top: 10px; */
+  padding: 10px 0px 10px 0px;
+  /* border: 1px solid black; */
+  /* border-radius: 20px; */
+  background-color: rgb(235, 235, 235);
 }
 
-.card label{
-    font-size: larger;
-    font-weight: bold;
+.card label {
+  font-size: larger;
+  font-weight: bold;
 }
 
-.card .rowContainer{
-    display: flex;
-    flex-direction: row;
-    column-gap: 20px;
-    flex-wrap: wrap;
-    flex-grow: 2;
-    padding-left: 5px;
+.card .rowContainer {
+  display: flex;
+  flex-direction: row;
+  column-gap: 20px;
+  flex-wrap: wrap;
+  flex-grow: 2;
+  padding-left: 5px;
 }
 
-.card .contentRowContainer{
-    display: flex;
-    flex-direction: row;
-    column-gap: 30px;
-    flex-wrap: wrap;
-    width: 40%;
-    justify-content: space-between;
+.card .contentRowContainer {
+  display: flex;
+  flex-direction: row;
+  column-gap: 30px;
+  flex-wrap: wrap;
+  width: 40%;
+  justify-content: space-between;
 }
 
-.card .heading{
-    background-color: aqua;
-    padding-left: 5px;
+.card .heading {
+  background-color: aqua;
+  padding-left: 5px;
+}
+
+@media screen and (max-width: 700px) {
+  .card .contentRowContainer {
+    width: 60%;
+    align-content: space-between;
+    column-gap: normal;
+  }
 }

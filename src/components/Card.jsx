@@ -9,7 +9,7 @@ const Card = (props) => {
     <>
       <div className={classes.card}>
         <div className={classes.heading}>
-          <h2>{props.OutputHeading}</h2>
+          <h2>Results</h2>
         </div>
         <div className={classes.rowContainer}>
           {props.lapeta !== 0 ? (

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Card from "./Card";
 import TilesRelatedInput from "./TilesRelatedInput";
 import DarkHighLiteCard from "./DarkHighLiteCard";
@@ -80,6 +80,7 @@ const DarkHighLite = () => {
   const [showHighlight, setShowHighlight] = useState(false);
   const [showLight, setShowLight] = useState(false);
   const [error, setError] = useState();
+
 
   const lengthHandler = (event) => {
     setRoomOf((prev) => {
@@ -584,7 +585,6 @@ const DarkHighLite = () => {
       )}
       {updateCard && (
         <Card
-          OutputHeading="DHL Output"
           lapeta={outputState.lapeta}
           wallSqr={outputState.wallSqrFt}
           perTileSqrFtPrice={

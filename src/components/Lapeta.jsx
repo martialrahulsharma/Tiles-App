@@ -5,6 +5,7 @@ import Card from "./Card";
 import ErrorModal from '../UI/ErrorModal';
 import classes from "./Lapeta.module.css";
 import Button from "./Button";
+import { useEffect } from "react";
 
 let lapetaComponentTiles;
 
@@ -216,7 +217,6 @@ const Lapeta = () => {
       {error && <ErrorModal title={error.title} message={error.message} onConfirm={errorHandler}/>}
       {updateCard && (
         <Card
-          OutputHeading="Results"
           lapeta={outputState.lapeta}
           wallSqr={outputState.wallSqrFt}
           perTileSqrFtPrice={

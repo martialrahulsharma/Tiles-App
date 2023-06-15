@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TilesRelatedInput from "./TilesRelatedInput";
 import Card from "./Card";
 import classes from "./SquareFeet.module.css";
@@ -167,7 +167,6 @@ const SquareFeet = () => {
       )}
       {updateCard && (
         <Card
-          OutputHeading="SqrFt Output"
           lapeta={0}
           wallSqr="0"
           perTileSqrFtPrice={
